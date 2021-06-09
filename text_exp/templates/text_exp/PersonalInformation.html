@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block title %}
+Welcome!
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Before we start, please provide the following information:
+    </p>
+
+    {% formfield player.name %}
+    {% formfield player.age %}
+    {% formfield player.gender %}
+    {% formfield player.is_student %}
+    {% formfield player.occupation %}
+    {% formfield player.residence %}
+
+    {% next_button %}
+
+{% endblock %}

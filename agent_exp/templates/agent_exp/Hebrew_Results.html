@@ -1,0 +1,66 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block app_styles %}
+<style>
+.otree-timer {
+    display: none;
+}
+
+blockquote {
+  direction: rtl;
+}
+</style>
+{% endblock %}
+
+{% block title %}
+<h1 class="rtl" dir="rtl" align="right">
+        תוצאות עבור סיבוב מספר {{ round }}
+</h1>
+{% endblock %}
+
+{% block content %}
+
+<div class="card bg-light instructions" dir="rtl" align="right">
+    <div class="card-body" dir="rtl" align="right">
+        <h5 dir="rtl" align="right">בסיבוב זה, תוצאת ההגרלה היא:</h5>
+        <h5 dir="ltr" align="right">{{ lottery_result }}</h5>
+
+        <p dir="rtl" align="right">
+                {% if receiver_timeout %}
+                    לא ענית בזמן, ולכן האפשרות '{{ receiver_choice }}'
+                    נבחרה בצורה רנדומלית.
+                {% else %}
+                    בחרת '{{ receiver_choice }}'
+            {% endif %}
+                {% if player.payoff >= 0 %}
+                והרווחת {{ receiver_payoff }}
+                {% else %}
+                    והפסדת {{ receiver_negative_result }}
+                {% endif %} נקודות.
+        </p>
+        <p dir="rtl" align="right">
+            אם היית בוחר/ת באפשרות '{{ other_choice }}', היית
+                {% if negative_other_gain_receiver %}
+                    מפסיד/ה: {{ other_gain_receiver }}
+                {% else %}
+                    מרוויח/ה: {{ other_gain_receiver }}
+                {% endif %}
+            נקודות.
+        </p>
+    </div>
+</div>
+
+    <p></p>
+
+    <div>
+        <button class="btn btn-primary btn-large">
+        {% if round < Constants.num_rounds %}
+            לסיבוב הבא
+        {% else %}
+            עבור לתוצאות הניסוי
+        {% endif %}
+        </button>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Final Results
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Thank you for your intention to participate and for the wait
+    </p>
+
+    <p>
+        Your payoff for waiting is: ${{ payment }}.
+    </p>
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="fc25682b-3410-4b92-b292-1becee27658c" name="nlp15">
+        <fileTransfer rootFolder="/home/mayatarno" accessType="SFTP" host="nlp15.iem.technion.ac.il" port="22" sshConfigId="302f143e-0847-48cc-9e2a-1cc77625fafe" sshConfig="mayatarno@nlp15.iem.technion.ac.il:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

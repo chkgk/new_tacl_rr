@@ -1,0 +1,31 @@
+{% extends "otree/MTurkPreview.html" %}
+{% load otree %}
+
+{% block title %}Please read this before clicking "Accept"{% endblock %}
+
+{% block content %}
+    <p>
+        This HIT is an academic experiment on decision making.
+    </p>
+
+    <p>
+        <b>Pay attention:</b> at the end of the experiment, you will might be asked to answer one simple question
+        to verify you indeed followed the texts in the experiment.
+        If you do not answer it correctly, you will not get paid.
+    </p>
+
+    <p>
+        It will require you to interact with other workers in real time.
+        Some other workers may be waiting until you have completed a given task before they can proceed.
+        So, please be mindful of other participants and complete all tasks in a timely fashion.
+        Please accept this HIT only if you can commit to completing it,
+        otherwise, the other participant will not be able to complete it too.
+    </p>
+
+    <p>
+        Once you will accept the HIT, it will start and you will have to be quick.
+    </p>
+
+    <p><b>You will receive $2.5 plus bonus of $1, based on your performance</b></p>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block app_styles %}
+<style>
+body {
+    font-family: Arial;
+    color: black;
+}
+
+div {
+  word-wrap: normal;
+}
+
+button {
+    word-wrap: normal;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, td, th, tr, thead {
+  border: 1px solid black;
+}
+
+</style>
+{% endblock %}
+
+
+{% block title %}
+    Before finish the experiment
+{% endblock %}
+
+{% block content %}
+
+<p style="text-align: center">Mark among the following {{ text_number }}, the {{ text_number }} you have actually seen before.</p>
+   <p><b>If you do not answer all the questions correctly, we will reject your work and you will not get paid for this HIT</b></p>
+         <table class="table">
+            <tbody>
+                <tr>
+                    <td>{{ not_chosen_reviews.1 }}</td>
+                    <td>{% formfield player.dm_test_not_chosen_review_2 %}</td>
+                </tr>
+                <tr>
+                    <td>{{ chosen_reviews.1 }}</td>
+                    <td>{% formfield player.dm_test_chosen_review_2 %}</td>
+                </tr>
+                <tr>
+                    <td>{{ chosen_reviews.0 }}</td>
+                    <td>{% formfield player.dm_test_chosen_review_1 %}</td>
+                </tr>
+                <tr>
+                    <td>{{ not_chosen_reviews.0 }}</td>
+                    <td>{% formfield player.dm_test_not_chosen_review_1 %}</td>
+                </tr>
+            </tbody>
+         </table>
+    {% next_button %}
+{% endblock %}

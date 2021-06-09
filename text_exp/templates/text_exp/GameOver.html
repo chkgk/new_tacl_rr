@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    The experiment is over!
+{% endblock %}
+
+{% block content %}
+
+    <div class="card bg-light instructions">
+        <div class="card-body">
+            <h2>Thank you for your participation</h2>
+            <p>You played for {{ Constants.num_rounds }} trials.</p>
+            <p>In this experiment you gained: {{ player_total_payoff }},
+                {{ participation_fee }} of them for your participation, and the rest {{ player_bonus }} is your bonus.</p>
+            <h4>Thank you and good luck!</h4>
+        </div>
+    </div>
+
+    {% next_button %}
+
+{% endblock %}

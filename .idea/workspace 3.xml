@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="133da47c-8284-4dcf-9ad3-13c02716a25e" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.23.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.27.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.28.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.29.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.31.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.33.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.34.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.35.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.36.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.37.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.38.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.39.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.41.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.42.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.43.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.44.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.45.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.46.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.47.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.49.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.51.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.52.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.53.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.54.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.55.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.56.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.57.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.58.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.59.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.61.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.62.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.63.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.64.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.65.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.66.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.67.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.68.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.69.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.71.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.72.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.73.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.74.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.75.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.76.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.77.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.78.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.79.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.81.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.82.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.83.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.84.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.85.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.86.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.87.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.88.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.89.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.91.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.92.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.93.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.94.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.95.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.96.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.97.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.98.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_0.99.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_exp/chart_prob_1.0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_fix_prob_exp/chart_prob_0.1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_fix_prob_exp/chart_prob_0.3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_fix_prob_exp/chart_prob_0.5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_fix_prob_exp/chart_prob_0.7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/first_fix_prob_exp/chart_prob_0.9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/global/instructions.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_static/global/matrix.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_templates/global/MTurkPreview.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_templates/global/Page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent_exp/50_problems_second_exp.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent_exp/fix_problems_agents.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent_exp/templates/agent_exp/GameOver.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent_exp/templates/agent_exp/Hebrew_GameOver.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent_exp/templates/agent_exp/Hebrew_Introduction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent_exp/templates/agent_exp/Hebrew_ReceiverPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent_exp/templates/agent_exp/Hebrew_ReceiverWaitPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent_exp/templates/agent_exp/Hebrew_Results.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent_exp/templates/agent_exp/Introduction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent_exp/templates/agent_exp/PersonalInformation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent_exp/templates/agent_exp/ReceiverPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent_exp/templates/agent_exp/ReceiverWaitPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent_exp/templates/agent_exp/Results.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_exp/problems_data_all_comb.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_exp/templates/first_exp/GameOver.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_exp/templates/first_exp/Introduction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_exp/templates/first_exp/MyPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_exp/templates/first_exp/OnePlayerWait.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_exp/templates/first_exp/PersonalInformation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_exp/templates/first_exp/PlayerRemoved.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_exp/templates/first_exp/ReceiverPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_exp/templates/first_exp/Results.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_exp/templates/first_exp/SenderPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_fix_prob_exp/fix_problems.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_fix_prob_exp/templates/first_fix_prob_exp/GameOver.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_fix_prob_exp/templates/first_fix_prob_exp/Introduction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_fix_prob_exp/templates/first_fix_prob_exp/MyPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_fix_prob_exp/templates/first_fix_prob_exp/OnePlayerWait.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_fix_prob_exp/templates/first_fix_prob_exp/PersonalInformation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_fix_prob_exp/templates/first_fix_prob_exp/PlayerRemoved.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_fix_prob_exp/templates/first_fix_prob_exp/ReceiverPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_fix_prob_exp/templates/first_fix_prob_exp/Results.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/first_fix_prob_exp/templates/first_fix_prob_exp/SenderPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/latest.dump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mturk_ag_exp/50_problems_second_exp.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mturk_ag_exp/fix_problems_agents.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mturk_ag_exp/templates/mturk_ag_exp/GameOver.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mturk_ag_exp/templates/mturk_ag_exp/Introduction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mturk_ag_exp/templates/mturk_ag_exp/PersonalInformation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mturk_ag_exp/templates/mturk_ag_exp/ReceiverPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mturk_ag_exp/templates/mturk_ag_exp/ReceiverWaitPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mturk_ag_exp/templates/mturk_ag_exp/Results.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mturk_ag_second_exp/2_gambles_exp.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mturk_ag_second_exp/templates/mturk_ag_second_exp/GameOver.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mturk_ag_second_exp/templates/mturk_ag_second_exp/Introduction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mturk_ag_second_exp/templates/mturk_ag_second_exp/PersonalInformation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mturk_ag_second_exp/templates/mturk_ag_second_exp/ReceiverPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mturk_ag_second_exp/templates/mturk_ag_second_exp/ReceiverWaitPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mturk_ag_second_exp/templates/mturk_ag_second_exp/Results.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/one_player_exp/50_problems_second_exp.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/one_player_exp/fix_problems_agents.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/one_player_exp/templates/one_player_exp/GameOver.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/one_player_exp/templates/one_player_exp/Introduction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/one_player_exp/templates/one_player_exp/PersonalInformation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/one_player_exp/templates/one_player_exp/ReceiverPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/one_player_exp/templates/one_player_exp/ReceiverWaitPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/one_player_exp/templates/one_player_exp/Results.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/otree_mturk_utils/templates/otree_mturk_utils/BigFive.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/otree_mturk_utils/templates/otree_mturk_utils/CustomWaitPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/otree_mturk_utils/templates/otree_mturk_utils/GenericExtendedWaitPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/otree_mturk_utils/templates/otree_mturk_utils/GenericExtendedWaitPageExample1ForOTree140.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/otree_mturk_utils/templates/otree_mturk_utils/GenericExtendedWaitPageExample2ForOTree140.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/otree_mturk_utils/templates/otree_mturk_utils/RealEffortTask.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/otree_mturk_utils/templates/otree_mturk_utils/waiting_page_channel.js.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/otree_mturk_utils/templates/radiogrid/radiogrid_input.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/otree_mturk_utils/templates/radiogrid/radiogrid_widget.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/10_reviews.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/reviews.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/reviews_not_seen.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/templates/text_exp/FeedbackTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/templates/text_exp/IntroTestFeedback.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/templates/text_exp/IntroTimeout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/templates/text_exp/MyPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/templates/text_exp/OnePlayerWait.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/templates/text_exp/PersonalInformation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/templates/text_exp/PlayerRemoved.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/templates/text_exp/Results.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/templates/text_exp/Test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/templates/text_exp/afterAutoSubmit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp_deterministic/10_reviews.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp_deterministic/reviews.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp_deterministic/reviews_not_seen.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp_deterministic/templates/text_exp_deterministic/FeedbackTest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp_deterministic/templates/text_exp_deterministic/IntroTestFeedback.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp_deterministic/templates/text_exp_deterministic/IntroTimeout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp_deterministic/templates/text_exp_deterministic/MyPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp_deterministic/templates/text_exp_deterministic/OnePlayerWait.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp_deterministic/templates/text_exp_deterministic/PersonalInformation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp_deterministic/templates/text_exp_deterministic/PlayerRemoved.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp_deterministic/templates/text_exp_deterministic/ReceiverPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp_deterministic/templates/text_exp_deterministic/Test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp_deterministic/templates/text_exp_deterministic/afterAutoSubmit.html" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="pages.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/text_exp/pages.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-8972">
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-229" />
+    <option name="y" value="-1057" />
+    <option name="width" value="1920" />
+    <option name="height" value="1057" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="oTree_mturk" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oTree_mturk" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oTree_mturk" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oTree_mturk" type="462c0819:PsiDirectoryNode" />
+              <item name="text_exp" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="133da47c-8284-4dcf-9ad3-13c02716a25e" name="Default" comment="" />
+      <created>1589451641853</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589451641853</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-229" y="-1057" width="1920" height="1057" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="right" id="Remote Host" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973376" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="SciView" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/text_exp/pages.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8972">
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
