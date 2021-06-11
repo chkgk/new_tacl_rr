@@ -7,7 +7,7 @@ pandas>=0.20.3
 joblib
 torch
 #==1.8.1+cpu
-numpy==1.15.4
+numpy>=1.16.5
 xlrd==1.1.0
 scikit-learn
 boto3
