@@ -7,5 +7,11 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\maya\tacl_rr\tacl_rr\db.sqlite3</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="db [2]" uuid="def3f410-a30a-4b4c-ad56-a9195010f4a0">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\maya\PycharmProjects\tacl_rr\new_tacl_rr\db.sqlite3</jdbc-url>
+    </data-source>
   </component>
 </project>
