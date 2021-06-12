@@ -19,7 +19,7 @@ from mcts_.Q_model import LSTMTagger as LSTMQ
 from scipy.special import softmax
 import random
 device =  torch.device("cuda" if torch.cuda.is_available() else "cpu")
-manual_features_file =joblib.load('mcts_\manual_binary_features_test_data.pkl')
+manual_features_file =joblib.load('manual_binary_features_test_data.pkl')
 bert_features_file = None#joblib.load('bert_embedding_test_data.pkl')
 from sklearn.metrics import pairwise
 from mcts_.update_and_push import find_review_index_given_review
