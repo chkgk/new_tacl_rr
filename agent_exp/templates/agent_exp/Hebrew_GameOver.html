@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+<h1 dir="rtl" align="right">הניסוי נגמר!</h1>
+{% endblock %}
+
+{% block content %}
+
+    <div class="card bg-light instructions" dir="rtl" align="right">
+        <div class="card-body" dir="rtl" align="right">
+            <h2 dir="rtl" align="right">תודה על השתתפותך!</h2>
+            <p dir="rtl" align="right">
+
+                {% if player_got_bonus %}
+                    במהלך הניסוי הרווחת את הבונוס!
+                {% else %}
+                    במהלך הניסוי לא הרווחת את הבונוס!
+                {% endif %}
+            </p>
+            <h4 dir="rtl" align="right">תודה רבה ובהצלחה!</h4>
+        </div>
+    </div>
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block app_styles %}
+<style>
+.otree-timer {
+    display: none;
+}
+
+blockquote {
+  direction: rtl;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card bg-light instructions" dir="rtl" align="right">
+    <div class="card-body" dir="rtl" align="right">
+        <h5 dir="rtl" align="right">אנא המתן/י להערכת המומחה!</h5>
+    </div>
+</div>
+{% endblock %}

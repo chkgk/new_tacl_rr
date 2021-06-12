@@ -1,0 +1,66 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block app_styles %}
+<style>
+body {
+    font-family: Arial;
+    color: black;
+}
+
+.left {
+    display: inline-block;
+    position: absolute;
+    left: 20px;
+    height: 260px;
+    width: 45%;
+    background-color: blue;
+    border: 1px solid black;
+    text-align: center;
+    color: white;
+
+}
+
+.right {
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    height: 260px;
+    width: 45%;
+    background-color: blue;
+    border: 1px solid black;
+    text-align: center;
+    color: white;
+
+}
+
+</style>
+{% endblock %}
+
+
+{% block title %}
+    Decision Maker Choice for round {{ round_number }}
+{% endblock %}
+
+{% block content %}
+<p style="text-align: center"><b>Please select option 'Action' or 'Status quo'</b></p>
+
+<div class="card bg-light">
+    <div class="card-body" style="width: 60%; height: 300px">
+        <button name="receiver_choice" value="False" class="left btn btn-primary btn-large">
+                <h5>The Action option</h5>
+                <h5>for this round is</h5>
+                <p>gain of {{ x }} if red is sampled</p>
+                <p>and lose of {{ y }} if yellow is sampled.</p>
+                <p>The Expert estimate for the probability </p>
+                <p>of sampling red is: {{ p }}</p>
+        </button>
+        <button name="receiver_choice" value="True" class="right btn btn-primary btn-large">
+            <h5>The Status quo option is:</h5>
+                <p>0 with certainty (probability 1)</p></button>
+    </div>
+</div>
+
+
+
+{% endblock %}

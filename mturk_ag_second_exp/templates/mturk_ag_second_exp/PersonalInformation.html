@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block title %}
+Welcome!
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        Before we start, please provide the following information:
+    </p>
+
+    {% for field in form %}
+        {% formfield field %}
+    {% endfor %}
+
+    {% next_button %}
+
+{% endblock %}
