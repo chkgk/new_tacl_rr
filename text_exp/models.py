@@ -29,7 +29,7 @@ class Constants(BaseConstants):
     seconds_wait_first_rounds_expert = 240  # 150
     seconds_wait_dm = 40
     seconds_wait_first_rounds_dm = 60
-    first_rounds = [1]
+    first_rounds = [1, 2]
     num_rounds_long_wait = first_rounds[-1]
     bonus = 1
     number_reviews_per_hotel = 7
