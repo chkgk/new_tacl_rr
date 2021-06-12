@@ -424,7 +424,7 @@ class ReceiverWaitPage(Page):
                          self.player.participant.vars['df'].at[round_ - 1,'group_score_6'] = self.participant.vars['problem_parameters'].at[round_ - 1,'score_6']
                          self.player.participant.vars['df'].at[round_ - 1, 'subsession_round_number'] = round_#average_score
                          self.player.participant.vars['df'].at[round_ - 1, 'group_average_score'] = round(self.participant.vars['problem_parameters'].at[round_ - 1,'average_score'],2)#round(self.group.average_score,2)
-            self.group.sender_answer_index = action[self.group.round_number]
+            self.group.sender_answer_index = action[self.group.round_number] if action[self.group.round_number]!=None else 6
             print(f'mcts_result:{self.group.sender_answer_index}')
             round_parameters = self.player.participant.vars['problem_parameters'].loc[self.group.round_number - 1]
             self.group.sender_answer_scores = round_parameters[f'score_{self.group.sender_answer_index}']
