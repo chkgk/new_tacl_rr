@@ -317,8 +317,9 @@ class ReceiverWaitPage(Page):
     template_name = 'text_exp/ReceiverWaitPage.html'
 
     def before_next_page(self):
-        if finish_mcts[self.group.round_number] == False :
-            finish_mcts[self.group.round_number] = True
+        print(sum([1 for key,val in finish_mcts.items() if val ==True]), self.group.round_number)
+        if finish_mcts[self.group.round_number-1] == False and (self.group.round_number - 1) == sum([1 for key,val in finish_mcts.items() if val ==True]):
+            finish_mcts[self.group.round_number-1] = True
             print(f'mcts_process!!_{self.group.is_done}')
             if self.group.round_number == 1:
                 new_df = pd.DataFrame(columns=self.player.participant.vars['df'].columns)
