@@ -317,6 +317,7 @@ class ReceiverWaitPage(Page):
     template_name = 'text_exp/ReceiverWaitPage.html'
 
     def before_next_page(self):
+        in_thred = True
         if finish_mcts[self.group.round_number] == False :
             finish_mcts[self.group.round_number] = True
             print(f'mcts_process!!_{self.group.is_done}')
@@ -390,7 +391,7 @@ class ReceiverWaitPage(Page):
                 action[self.group.round_number] = mcts_live_simu(self.player.participant.vars['df'], self.group.round_number)
             #finish_mcts[self.group.round_number] = True
             in_thred = False
-        else:
+        elif in_thred == False:
             if self.group.round_number==1:
                      for round_ in range(1,11):
                          #print(self.participant.vars['problem_parameters']['average_score'],'lplp')
@@ -440,9 +441,8 @@ class ReceiverWaitPage(Page):
         if self.group.round_number not in action.keys():
             self.group.set_round_parameters()
             print('ReceiverWaitPage is_displayed')
-            if in_thred == False:
-                x = threading.Thread(target=self.before_next_page)
-                x.start()
+            x = threading.Thread(target=self.before_next_page)
+            x.start()
             print('continue to get timeout')
         if self.group.failed_intro_test!=True:
             return True
