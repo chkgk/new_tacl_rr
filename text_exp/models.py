@@ -29,19 +29,16 @@ class Constants(BaseConstants):
     seconds_wait_first_rounds_expert = 240  # 150
     seconds_wait_dm = 40
     seconds_wait_first_rounds_dm = 60
-    first_rounds = [1, 2]
+    first_rounds = [1]
     num_rounds_long_wait = first_rounds[-1]
     bonus = 1
     number_reviews_per_hotel = 7
     cost = 8
     rounds_for_reviews_in_test = [7, 9]
-    # participation_fee = 2.5
-
     num_timeouts_remove = 5
     minutes_to_timeout_wait_page = 10
     pay_by_time_for_waiting = 0.04
     max_payment_for_waiting = 0.4
-
     reviews_not_seen = pd.read_csv(reviews_not_seen_file_path, header=0)
     intro_timeout_minutes = 10
     real_participation_fee = 2.5
@@ -61,7 +58,6 @@ class Subsession(BaseSubsession):
 
         problems_data_file_path = os.path.join(data_directory, f"10_reviews_test_data.csv")
         problems = pd.read_csv(problems_data_file_path, header=0).sample(frac=1).reset_index(drop=True)
-        self.condition = self.session.config['cond']
         if self.round_number == 1:
             for g in self.get_groups():
                 if g.set_parameters:
@@ -69,11 +65,6 @@ class Subsession(BaseSubsession):
                     continue
 
                 for p in g.get_players():
-                    #print( g.get_players(),'maya5')
-                    if 'problem_parameters' in p.participant.vars:
-                        print('already created problems for player with id {p.id_in_group}')
-                        continue
-
                     if p.id_in_group == 1:  # create the parameters only for experts:
                         print(f'creating session for player with role {p.role()},'
                               f'id_in_subsession: {p.id_in_subsession}')

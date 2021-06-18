@@ -448,7 +448,7 @@ class ReceiverWaitPage(Page):
 
     def get_timeout_seconds(self):
         print('timeout begin')
-        return 120
+        return 30#120
 
 
     # def before_next_page(self):
@@ -1018,5 +1018,5 @@ page_sequence = [
     FeedbackTest,
     GameOver,
     # OnePlayerWait,
-    AfterAutoSubmit
+    #AfterAutoSubmit
 ]

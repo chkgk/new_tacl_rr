@@ -260,7 +260,7 @@ def mcts_live_simu(all_interaction,round):
     value_model.load_state_dict(torch.load(q_model_name,map_location='cpu'))
     value_model = value_model.to(device)
     value_model.eval()
-    timeLimit = 90000#10000#
+    timeLimit = 10#90000#10000#
     tot_pay, count = 0, 0
     interaction = all_interaction.reset_index()
     currentround = round

@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff581127-aa9d-4021-ac44-07064c73901c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mcts_/mcts_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/mcts_/mcts_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/_builtin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_exp/_builtin/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_exp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/pages.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_exp/pages.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +110,8 @@
       <workItem from="1621698012776" duration="6030000" />
       <workItem from="1621873950224" duration="34283000" />
       <workItem from="1623399614147" duration="12528000" />
-      <workItem from="1623512538967" duration="4989000" />
+      <workItem from="1623512538967" duration="5619000" />
+      <workItem from="1623771695786" duration="5444000" />
     </task>
     <servers />
   </component>
@@ -136,10 +142,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="550" y="113" width="659" height="500" key="EnvironmentVariablesDialog/0.0.1366.728@0.0.1366.728" timestamp="1621702509168" />
-    <state x="108" y="106" key="FileChooserDialogImpl" timestamp="1622206233247">
+    <state x="108" y="106" key="FileChooserDialogImpl" timestamp="1623759061211">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="108" y="106" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1622206233247" />
+    <state x="108" y="106" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1623759061211" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1622220658562">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -164,10 +170,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="183" y="114" width="523" height="540" key="ftp.server.browser/0.0.1366.728@0.0.1366.728" timestamp="1621694442251" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1623517467397">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1623774646484">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1623517467397" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1623774646484" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -184,12 +190,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/text_exp/models.py</url>
-          <line>67</line>
+          <line>63</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/text_exp/models.py</url>
-          <line>95</line>
+          <line>86</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -214,7 +220,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/text_exp/models.py</url>
-          <line>176</line>
+          <line>167</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -226,6 +232,11 @@
           <url>file://$PROJECT_DIR$/text_exp/pages.py</url>
           <line>497</line>
           <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/text_exp/pages.py</url>
+          <line>308</line>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
