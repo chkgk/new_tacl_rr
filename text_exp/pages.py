@@ -429,6 +429,7 @@ class ReceiverWaitPage(Page):
                          self.player.participant.vars['df'].at[round_ - 1, 'subsession_round_number'] = round_#average_score
                          self.player.participant.vars['df'].at[round_ - 1, 'group_average_score'] = round(self.participant.vars['problem_parameters'].at[round_ - 1,'average_score'],2)#round(self.group.average_score,2)
             try:
+                print('after_mcts!')
                 self.group.sender_answer_index = action[self.group.round_number] if action[self.group.round_number]!=None else 6
                 print(f'mcts_result:{self.group.sender_answer_index}')
                 round_parameters = self.player.participant.vars['problem_parameters'].loc[self.group.round_number - 1]
@@ -454,7 +455,7 @@ class ReceiverWaitPage(Page):
             return True
 
     def get_timeout_seconds(self):
-        #print('timeout begin')
+        print('timeout begin')
         return 40#120
 
 
