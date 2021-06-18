@@ -10,7 +10,7 @@ import pandas as pd
 import threading
 
 action = {}
-in_thred = False
+in_thred = {0:0}
 in_mcts = False
 finish_mcts = {0: False, 1:False, 2:False,3:False,4:False,5:False, 6:False,7:False,8:False,9:False,10:False}
 # class GroupedWaitPage(CustomMturkWaitPage):
@@ -318,7 +318,8 @@ class ReceiverWaitPage(Page):
 
     def before_next_page(self):
         print(sum([1 for key,val in finish_mcts.items() if val ==True]), self.group.round_number)
-        if finish_mcts[self.group.round_number-1] == False and (self.group.round_number - 1) == sum([1 for key,val in finish_mcts.items() if val ==True]):
+        if in_thred[0] == self.group.round_number - 1 and finish_mcts[self.group.round_number-1] == False and (self.group.round_number - 1) == sum([1 for key,val in finish_mcts.items() if val ==True]):
+            in_thred[0] = in_thred[0] + 1
             finish_mcts[self.group.round_number-1] = True
             print(f'mcts_process!!_{self.group.is_done}')
             if self.group.round_number == 1:
@@ -390,7 +391,6 @@ class ReceiverWaitPage(Page):
             else:
                 action[self.group.round_number] = mcts_live_simu(self.player.participant.vars['df'], self.group.round_number)
             #finish_mcts[self.group.round_number] = True
-            in_thred = False
         else:
             if self.group.round_number==1:
                      for round_ in range(1,11):
