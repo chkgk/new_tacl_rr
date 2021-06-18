@@ -11,6 +11,7 @@ import threading
 
 action = {}
 in_thred = False
+in_mcts = False
 finish_mcts = {0: False, 1:False, 2:False,3:False,4:False,5:False, 6:False,7:False,8:False,9:False,10:False}
 # class GroupedWaitPage(CustomMturkWaitPage):
 #     group_by_arrival_time = True
@@ -316,8 +317,8 @@ class ReceiverWaitPage(Page):
     template_name = 'text_exp/ReceiverWaitPage.html'
 
     def before_next_page(self):
-        if finish_mcts[self.group.round_number] == False:
-            in_thred = True
+        if finish_mcts[self.group.round_number] == False :
+            finish_mcts[self.group.round_number] = True
             print(f'mcts_process!!_{self.group.is_done}')
             if self.group.round_number == 1:
                 new_df = pd.DataFrame(columns=self.player.participant.vars['df'].columns)
@@ -387,7 +388,7 @@ class ReceiverWaitPage(Page):
                 action[self.group.round_number] = mcts_live_simu(new_df, self.group.round_number)
             else:
                 action[self.group.round_number] = mcts_live_simu(self.player.participant.vars['df'], self.group.round_number)
-            finish_mcts[self.group.round_number] = True
+            #finish_mcts[self.group.round_number] = True
             in_thred = False
         else:
             if self.group.round_number==1:
@@ -1000,15 +1001,14 @@ class AfterAutoSubmit(Page):
 
 
 page_sequence = [
-    # GroupedWaitPage,
-      Introduction,
-      IntroTestFeedback,
-    AfterIntroTest,
+      #Introduction,
+      #IntroTestFeedback,
+    #AfterIntroTest,
      #IntroTestFeedback,
-     IntroTimeout,
-     PersonalInformation,
-     AfterInstructions,
-      IntroTimeout,
+     #IntroTimeout,
+     #PersonalInformation,
+     #AfterInstructions,
+     # IntroTimeout,
     #SenderPage,
     ReceiverWaitPage,
     ReceiverPage,
