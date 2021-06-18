@@ -317,7 +317,6 @@ class ReceiverWaitPage(Page):
     template_name = 'text_exp/ReceiverWaitPage.html'
 
     def before_next_page(self):
-        in_thred = True
         if finish_mcts[self.group.round_number] == False :
             finish_mcts[self.group.round_number] = True
             print(f'mcts_process!!_{self.group.is_done}')
@@ -391,7 +390,7 @@ class ReceiverWaitPage(Page):
                 action[self.group.round_number] = mcts_live_simu(self.player.participant.vars['df'], self.group.round_number)
             #finish_mcts[self.group.round_number] = True
             in_thred = False
-        elif in_thred == False:
+        else:
             if self.group.round_number==1:
                      for round_ in range(1,11):
                          #print(self.participant.vars['problem_parameters']['average_score'],'lplp')
@@ -426,16 +425,20 @@ class ReceiverWaitPage(Page):
                          self.player.participant.vars['df'].at[round_ - 1,'group_score_6'] = self.participant.vars['problem_parameters'].at[round_ - 1,'score_6']
                          self.player.participant.vars['df'].at[round_ - 1, 'subsession_round_number'] = round_#average_score
                          self.player.participant.vars['df'].at[round_ - 1, 'group_average_score'] = round(self.participant.vars['problem_parameters'].at[round_ - 1,'average_score'],2)#round(self.group.average_score,2)
-            self.group.sender_answer_index = action[self.group.round_number] if action[self.group.round_number]!=None else 6
-            print(f'mcts_result:{self.group.sender_answer_index}')
-            round_parameters = self.player.participant.vars['problem_parameters'].loc[self.group.round_number - 1]
-            self.group.sender_answer_scores = round_parameters[f'score_{self.group.sender_answer_index}']
-            self.group.sender_answer_reviews = \
-                round_parameters[f'random_positive_negative_review_{self.group.sender_answer_index}']
-            self.group.sender_answer_positive_reviews = \
-                round_parameters[f'positive_review_{self.group.sender_answer_index}']
-            self.group.sender_answer_negative_reviews = \
-                round_parameters[f'negative_review_{self.group.sender_answer_index}']
+            try:
+                self.group.sender_answer_index = action[self.group.round_number] if action[self.group.round_number]!=None else 6
+                print(f'mcts_result:{self.group.sender_answer_index}')
+                round_parameters = self.player.participant.vars['problem_parameters'].loc[self.group.round_number - 1]
+                self.group.sender_answer_scores = round_parameters[f'score_{self.group.sender_answer_index}']
+                self.group.sender_answer_reviews = \
+                    round_parameters[f'random_positive_negative_review_{self.group.sender_answer_index}']
+                self.group.sender_answer_positive_reviews = \
+                    round_parameters[f'positive_review_{self.group.sender_answer_index}']
+                self.group.sender_answer_negative_reviews = \
+                    round_parameters[f'negative_review_{self.group.sender_answer_index}']
+                print('table results are updated!')
+            except:
+                None
 
     def is_displayed(self):
         if self.group.round_number not in action.keys():
