@@ -13,6 +13,7 @@ action = {}
 in_thred = {0:0}
 in_mcts = False
 finish_mcts = {0: False, 1:False, 2:False,3:False,4:False,5:False, 6:False,7:False,8:False,9:False,10:False}
+receiver_finish_round = {0: False, 1:False, 2:False,3:False,4:False,5:False, 6:False,7:False,8:False,9:False,10:False}
 # class GroupedWaitPage(CustomMturkWaitPage):
 #     group_by_arrival_time = True
 #     pay_by_time = Constants.pay_by_time_for_waiting / 60  # they will get 9 cents for a minute they wait
@@ -318,7 +319,7 @@ class ReceiverWaitPage(Page):
 
     def before_next_page(self):
         print(sum([1 for key,val in finish_mcts.items() if val ==True]), self.group.round_number)
-        if in_thred[0] == self.group.round_number - 1 and finish_mcts[self.group.round_number-1] == False and (self.group.round_number - 1) == sum([1 for key,val in finish_mcts.items() if val ==True]):
+        if receiver_finish_round[self.group.round_number-1]== finish_mcts[self.group.round_number-1] and in_thred[0] == self.group.round_number - 1 and finish_mcts[self.group.round_number-1] == False and (self.group.round_number - 1) == sum([1 for key,val in finish_mcts.items() if val ==True]):
             in_thred[0] = in_thred[0] + 1
             finish_mcts[self.group.round_number-1] = True
             print(f'mcts_process!!_{self.group.is_done}')
@@ -453,7 +454,7 @@ class ReceiverWaitPage(Page):
 
     def get_timeout_seconds(self):
         #print('timeout begin')
-        return 30#120
+        return 20#120
 
 
     # def before_next_page(self):
@@ -579,7 +580,8 @@ class Results(CustomMturkPage):
             return 30
         else:
             return 10
-
+    def before_next_page(self):
+        receiver_finish_round[self.group.round_number - 1] = True
     # def is_displayed(self):  # show this page only to the sender player if no player pass the 5 timeout condition
     #     if not self.player.participant.vars.get('go_to_the_end', False):  # players who didn't get a partner
     #         return not self.group.instruction_timeout and not self.group.failed_intro_test
