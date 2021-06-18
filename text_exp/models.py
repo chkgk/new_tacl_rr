@@ -27,8 +27,8 @@ class Constants(BaseConstants):
     sender_payoff_per_round = 1
     seconds_wait_expert = 240  # 120
     seconds_wait_first_rounds_expert = 240  # 150
-    seconds_wait_dm = 40
-    seconds_wait_first_rounds_dm = 60
+    seconds_wait_dm = 240
+    seconds_wait_first_rounds_dm = 240
     first_rounds = [1]
     num_rounds_long_wait = first_rounds[-1]
     bonus = 1

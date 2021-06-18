@@ -4,6 +4,7 @@
     <list default="true" id="ff581127-aa9d-4021-ac44-07064c73901c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text_exp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_exp/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/text_exp/pages.py" beforeDir="false" afterPath="$PROJECT_DIR$/text_exp/pages.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,7 +109,7 @@
       <workItem from="1621873950224" duration="34283000" />
       <workItem from="1623399614147" duration="12528000" />
       <workItem from="1623512538967" duration="5619000" />
-      <workItem from="1623771695786" duration="7983000" />
+      <workItem from="1623771695786" duration="9610000" />
     </task>
     <servers />
   </component>
@@ -177,7 +178,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/text_exp/pages.py</url>
-          <line>586</line>
+          <line>587</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -222,12 +223,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/text_exp/pages.py</url>
-          <line>548</line>
+          <line>549</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/text_exp/pages.py</url>
-          <line>501</line>
+          <line>502</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
