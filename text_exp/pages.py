@@ -274,8 +274,8 @@ class SenderPage(CustomMturkPage):
 
     def is_displayed(self):  # show this page only to the sender player if no player pass the 5 timeout condition
         if not self.player.participant.vars.get('go_to_the_end', False):  # players who didn't get a partner
-            print(f'SenderPage: self.group.instruction_timeout: {self.group.instruction_timeout}')
-            print(f'SenderPage: self.group.failed_intro_test: {self.group.failed_intro_test}')
+            #print(f'SenderPage: self.group.instruction_timeout: {self.group.instruction_timeout}')
+            #print(f'SenderPage: self.group.failed_intro_test: {self.group.failed_intro_test}')
 
             return self.player.id_in_group == 1 and not self.group.instruction_timeout and not\
                 self.group.failed_intro_test
@@ -444,16 +444,16 @@ class ReceiverWaitPage(Page):
     def is_displayed(self):
         if self.group.round_number not in action.keys():
             self.group.set_round_parameters()
-            print('ReceiverWaitPage is_displayed')
+            #print('ReceiverWaitPage is_displayed')
             x = threading.Thread(target=self.before_next_page)
             x.start()
-            print('continue to get timeout')
+            #print('continue to get timeout')
         if self.group.failed_intro_test!=True:
             return True
 
     def get_timeout_seconds(self):
-        print('timeout begin')
-        return 120#120
+        #print('timeout begin')
+        return 30#120
 
 
     # def before_next_page(self):
@@ -527,14 +527,14 @@ class ReceiverPage(CustomMturkPage):
         if self.group.failed_intro_test!=True:
             return True
     def get_timeout_seconds(self):
-        print('ReceiverPage get_timeout_seconds')
+        #print('ReceiverPage get_timeout_seconds')
         if self.round_number in Constants.first_rounds:
             return Constants.seconds_wait_first_rounds_dm
         else:
             return Constants.seconds_wait_dm
 
     def before_next_page(self):
-        print('ReceiverPage before_next_page')
+        #print('ReceiverPage before_next_page')
         if self.timeout_happened:  # if the receiver didn't provide a probability after seconds_wait
             # self.participant.vars['num_timeout'] += 1
             self.group.receiver_timeout = True
@@ -543,7 +543,7 @@ class ReceiverPage(CustomMturkPage):
 
 
     def vars_for_template(self):
-        print('ReceiverPage vars_for_template')
+        #print('ReceiverPage vars_for_template')
 
         if self.session.config['cond'] == 'verbal' or self.session.config['cond'] == 'only_text':
             score_all_review = self.group.sender_answer_reviews
@@ -610,7 +610,7 @@ class Results(CustomMturkPage):
         else:
             self.player.participant.vars['df'].at[self.group.round_number-1,'review_id']=reviews_features[(reviews_features.hotel == self.player.participant.vars['df'].at[self.group.round_number-1,'group_average_score']) & (reviews_features.rev_index == self.player.participant.vars['df'].at[self.group.round_number-1,'group_sender_answer_index']) & (
                 reviews_features.posorneg == 'Negative')]['review_id'].values[0]
-        print(self.player.participant.vars['df'].at[self.group.round_number-1,'review_id'],'maya_test')
+        #print(self.player.participant.vars['df'].at[self.group.round_number-1,'review_id'],'maya_test')
 
         if self.group.receiver_choice:  # if the receiver chose Status quo
             receiver_choice = 'Stay at home'
@@ -878,19 +878,19 @@ class GameOver(Page):
         # receiver total points
         receiver_total_points = sum([p.payoff for p in self.player.in_all_rounds()]) + \
                                 self.session.vars['initial_points_receiver']
-        print('receiver_total_points', receiver_total_points)
+        #print('receiver_total_points', receiver_total_points)
         receiver_p_to_bonus = float(receiver_total_points / self.player.participant.vars['max_points'])
-        print('receiver_p_to_bonus:', receiver_p_to_bonus)
+        #print('receiver_p_to_bonus:', receiver_p_to_bonus)
         receiver_bonus = Constants.bonus if random.random() <= receiver_p_to_bonus else 0
-        print('receiver_bonus', receiver_bonus)
+        #print('receiver_bonus', receiver_bonus)
         receiver_total_payoff = receiver_bonus + self.session.config['participation_fee']
         receiver_total_payoff = c(receiver_total_payoff)
-        print('receiver payoff', receiver_total_payoff)
+        #print('receiver payoff', receiver_total_payoff)
 
-        print('max points for receiver:', self.player.participant.vars['max_points'])
+        #print('max points for receiver:', self.player.participant.vars['max_points'])
 
         self.player.participant.payoff = c(receiver_bonus)
-        print('receiver final payoff:', self.player.participant.payoff)
+        #print('receiver final payoff:', self.player.participant.payoff)
 
         return {'player_total_payoff': receiver_total_payoff,
                 'player_bonus': self.player.participant.payoff,
@@ -931,10 +931,10 @@ class OnePlayerWait(Page):
         # "finish study button" on a CustomMturkWaitPage skip_until_the_end_of
         # show this page also to participants that passed the first test but partners have not
         # show this page also to participants that wait to their partner on instruction page for more than 10 minutes
-        print(f"instruction_timeout: {self.player.participant.vars.get('instruction_timeout')},"
-              f"failed_intro_test: {self.player.participant.vars.get('failed_intro_test')},"
-              f"failed_intro_test: {self.group.failed_intro_test},"
-              f"instruction_timeout: {self.group.instruction_timeout}")
+        #print(f"instruction_timeout: {self.player.participant.vars.get('instruction_timeout')},"
+        #      f"failed_intro_test: {self.player.participant.vars.get('failed_intro_test')},"
+        #      f"failed_intro_test: {self.group.failed_intro_test},"
+        #      f"instruction_timeout: {self.group.instruction_timeout}")
         if self.round_number == 1 and self.player.participant.vars.get('go_to_the_end', False):
             return True
         # elif self.player.participant.vars.get('failed_intro_test'):
@@ -948,7 +948,7 @@ class OnePlayerWait(Page):
         #     self.player.participant.vars.get('instruction_timeout') and self.group.instruction_timeout)
 
     def vars_for_template(self):
-        print('finish the study')
+        #print('finish the study')
         if self.player.participant.vars['payment_for_wait'] > Constants.max_payment_for_waiting:
             self.player.participant.vars['payment_for_wait'] = Constants.max_payment_for_waiting
         self.player.participant.payoff = self.player.participant.vars['payment_for_wait']

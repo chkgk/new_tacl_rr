@@ -45,10 +45,10 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    print('class Subsession')
+    #('class Subsession')
     condition = models.StringField()
     def creating_session(self):
-        print('creating_session!!!')
+        #print('creating_session!!!')
         """
         This function will run at the beginning of each session
         and will initial the problems parameters for all the rounds
@@ -61,13 +61,13 @@ class Subsession(BaseSubsession):
         if self.round_number == 1:
             for g in self.get_groups():
                 if g.set_parameters:
-                    print('already created problems for group')
+                    #print('already created problems for group')
                     continue
 
                 for p in g.get_players():
                     if p.id_in_group == 1:  # create the parameters only for experts:
-                        print(f'creating session for player with role {p.role()},'
-                              f'id_in_subsession: {p.id_in_subsession}')
+                        ##print(f'creating session for player with role {p.role()},'
+                         #     f'id_in_subsession: {p.id_in_subsession}')
                         # Load problems and shuffle the them so each subject will get them in a different order
                         # problems = Constants.problems
                         for i in range(Constants.number_reviews_per_hotel):
@@ -107,7 +107,7 @@ class Subsession(BaseSubsession):
 
                         p.participant.vars['df'] = df
                         #print(p.participant.vars,'maya_')
-                        print(f'set parameters to True')
+                        #print(f'set parameters to True')
                         g.set_parameters = True
 
                         # for debug:
@@ -126,7 +126,7 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    print('Group class defining')
+    #print('Group class defining')
     set_parameters = models.BooleanField(initial=False)
     receiver_choice = models.BooleanField()  # True (1) for Certainty and False (0) for Lottery
     lottery_result = models.FloatField()
@@ -186,7 +186,7 @@ class Group(BaseGroup):
 
     def set_round_parameters(self):
         start_time = time.time()
-        print('set_round_parameters group')
+        #print('set_round_parameters group')
         sender = self.get_players()[0]
         #print(sender,'sender')
         # create lottery result and insert round_parameters to the database
@@ -235,7 +235,7 @@ class Group(BaseGroup):
         score_list = round_parameters[score_columns]
         #print(f'score_list: {score_list}')
         self.lottery_result = lottery(score_list)
-        print(f'lottery result:{self.lottery_result}')
+        #(f'lottery result:{self.lottery_result}')
         #print("--- group class seconds ---" % (time.time() - start_time))
 
         # print(f'scores parameters in set_round_parameters: '
@@ -247,8 +247,8 @@ class Group(BaseGroup):
             sender.participant.vars['max_points'] += (self.lottery_result - Constants.cost)
 
     def set_payoffs(self):
-        print('set_payoffs group')
-        print('receiver choice:', self.receiver_choice, "maya: ", self.get_player_by_role('Decision Maker'))
+        #print('set_payoffs group')
+        #print('receiver choice:', self.receiver_choice, "maya: ", self.get_player_by_role('Decision Maker'))
         #sender = self.get_player_by_role('Expert')
         receiver = self.get_player_by_role('Decision Maker')
 
@@ -274,7 +274,7 @@ class Group(BaseGroup):
             #sender.payoff = c(Constants.sender_payoff_per_round)
             self.sender_payoff = Constants.sender_payoff_per_round
 
-        print('receiver.payoff:', receiver.payoff, 'sender.payoff:', self.sender_payoff)
+        #print('receiver.payoff:', receiver.payoff, 'sender.payoff:', self.sender_payoff)
 
         return
 
@@ -364,7 +364,7 @@ class Player(BasePlayer):
 
 
 class Session:
-    print('Session class')
+    #print('Session class')
     num_participants = 1
     #problems_data_file_path = os.path.join(data_directory, f"{self.session.config['review_file_name']}.csv")
     #problems = pd.read_csv(problems_data_file_path, header=0).sample(frac=1).reset_index(drop=True)
