@@ -249,6 +249,7 @@ class Action():
 
 
 def mcts_live_simu(all_interaction,round):
+    print('mcts start to load models')
     dm_model_name = 'mcts_/0.824_20_behavioral_features+text_all_data_epoch_100_batch_5_hid_dim_256_drop_0.3.th'  # all_data_sigmoid_new_with_manual_updated_epoch_62_batch_20_hid_dim_100.th'#transformer_fscore_0.6552655759833379_acc_0.8458333333333333_epoch_98_batch_5_hid_dim_100_fold_'
     q_model_name = 'mcts_/0.389_20_features_behavioral+textual_all_data_epoch_100_batch_10_hid_dim_128_drop_0.4.th'  # all_data_sigmoid_new_with_manual_updated_epoch_62_batch_20_hid_dim_100.th'#transformer_fscore_0.6552655759833379_acc_0.8458333333333333_epoch_98_batch_5_hid_dim_100_fold_'
     treshold = 0.5
@@ -260,6 +261,7 @@ def mcts_live_simu(all_interaction,round):
     value_model.load_state_dict(torch.load(q_model_name,map_location='cpu'))
     value_model = value_model.to(device)
     value_model.eval()
+    print('models are loaded!')
     timeLimit = 10#90000#10000#
     tot_pay, count = 0, 0
     interaction = all_interaction.reset_index()
