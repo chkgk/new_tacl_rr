@@ -4,7 +4,7 @@ transformers
 django-radiogrid>=1.0.4
 pandas>=0.20.3
 -f https://download.pytorch.org/whl/torch_stable.html
-joblib
+joblib==1.0.1
 torch==1.7.0+cpu
 #==1.8.1+cpu
 numpy>=1.16.5
