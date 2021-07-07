@@ -316,7 +316,7 @@ def maya(df,round):
 
 class ReceiverWaitPage(Page):
     template_name = 'text_exp/ReceiverWaitPage.html'
-
+    timeout_seconds = 200
     def before_next_page(self):
         print(sum([1 for key,val in finish_mcts.items() if val ==True]), self.group.round_number)
         print(receiver_finish_round[self.group.round_number-1], finish_mcts[self.group.round_number-1] )
@@ -436,6 +436,7 @@ class ReceiverWaitPage(Page):
                 self.group.sender_answer_scores = round_parameters[f'score_{self.group.sender_answer_index}']
                 self.group.sender_answer_reviews = \
                     round_parameters[f'random_positive_negative_review_{self.group.sender_answer_index}']
+                print(f'mcts_rev: {self.group.sender_answer_reviews}')
                 self.group.sender_answer_positive_reviews = \
                     round_parameters[f'positive_review_{self.group.sender_answer_index}']
                 self.group.sender_answer_negative_reviews = \
