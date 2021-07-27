@@ -305,9 +305,6 @@ class SenderPage(CustomMturkPage):
             'reviews': reviews,
         }
 def maya(df,round):
-    #print('in maya func')
-    #print(df)
-    #print(round)
     return mcts_live_simu(df,round)
 
 
@@ -320,7 +317,8 @@ class ReceiverWaitPage(Page):
     def before_next_page(self):
         print(sum([1 for key,val in finish_mcts.items() if val ==True]), self.group.round_number)
         print(receiver_finish_round[self.group.round_number-1], finish_mcts[self.group.round_number-1] )
-        if receiver_finish_round[self.group.round_number-1] == finish_mcts[self.group.round_number-1] and in_thred[0] == self.group.round_number - 1 and finish_mcts[self.group.round_number-1] == False and (self.group.round_number - 1) == sum([1 for key,val in finish_mcts.items() if val ==True]):
+        #receiver_finish_round[self.group.round_number-1] == finish_mcts[self.group.round_number-1] and  in_thred[0] == self.group.round_number - 1 and finish_mcts[self.group.round_number-1] == False and
+        if  (self.group.round_number - 1) == sum([1 for key,val in finish_mcts.items() if val ==True]):
             in_thred[0] = in_thred[0] + 1
             finish_mcts[self.group.round_number-1] = True
             print(f'mcts_process!!_{self.group.is_done}')
