@@ -315,12 +315,12 @@ class ReceiverWaitPage(Page):
     template_name = 'text_exp/ReceiverWaitPage.html'
     timeout_seconds = 200
     def before_next_page(self):
-        print(sum([1 for key,val in finish_mcts.items() if val ==True]), self.group.round_number-1)
+        #print(sum([1 for key,val in finish_mcts.items() if val ==True]), self.group.round_number-1)
         #receiver_finish_round[self.group.round_number-1] == finish_mcts[self.group.round_number-1] and  in_thred[0] == self.group.round_number - 1 and finish_mcts[self.group.round_number-1] == False and
         if  (self.group.round_number - 1) == sum([1 for key,val in finish_mcts.items() if val ==True]):
-            in_thred[0] = in_thred[0] + 1
+            #in_thred[0] = in_thred[0] + 1
             finish_mcts[self.group.round_number-1] = True
-            print(f'mcts_process!!_{self.group.is_done}')
+            print(f'enter to "if"')
             if self.group.round_number == 1:
                 new_df = pd.DataFrame(columns=self.player.participant.vars['df'].columns)
                 for round_ in range(1, 11):
@@ -391,6 +391,7 @@ class ReceiverWaitPage(Page):
                 action[self.group.round_number] = mcts_live_simu(self.player.participant.vars['df'], self.group.round_number)
             #finish_mcts[self.group.round_number] = True
         else:
+            print('enter to "else"')
             if self.group.round_number==1:
                      for round_ in range(1,11):
                          #print(self.participant.vars['problem_parameters']['average_score'],'lplp')
