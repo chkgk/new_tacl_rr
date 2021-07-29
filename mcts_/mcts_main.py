@@ -262,7 +262,7 @@ def mcts_live_simu(all_interaction,round):
     value_model = value_model.to(device)
     value_model.eval()
     print('models are loaded!')
-    timeLimit = 200000#10#90000#10000#
+    timeLimit = 20000#10#90000#10000#
     tot_pay, count = 0, 0
     interaction = all_interaction.reset_index()
     currentround = round
