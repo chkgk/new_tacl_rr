@@ -390,13 +390,18 @@ class ReceiverWaitPage(Page):
                         self.participant.vars['problem_parameters'].at[round_ - 1, 'average_score'],
                         2)  # round(self.group.average_score,2)
                 # action[self.group.round_number] = mcts_live_simu(new_df, self.group.round_number)
+                print(f'the time before calling mcts_live_simu is: {time.time()}')
                 self.group.action = mcts_live_simu(new_df, self.group.round_number)
+                print(f'the time after calling mcts_live_simu is: {time.time()}')
             else:
                 # action[self.group.round_number] = mcts_live_simu(self.player.participant.vars['df'], self.group.round_number)
+                print(f'the time before calling mcts_live_simu is: {time.time()}')
                 self.group.action = mcts_live_simu(self.player.participant.vars['df'], self.group.round_number)
+                print(f'the time after calling mcts_live_simu is: {time.time()}')
             # finish_mcts[self.group.round_number] = True
         else:
             print('enter to "else"')
+            print(f'the time is: {time.time()}')
             if self.group.round_number == 1:
                 for round_ in range(1, 11):
                     #print(self.participant.vars['problem_parameters']['average_score'],'lplp')
@@ -453,6 +458,7 @@ class ReceiverWaitPage(Page):
         # if self.group.round_number not in action.keys():
         if self.group.action == 10:  # this round has not run yet
             self.group.set_round_parameters()
+            print(f'the time in is_displayed is: {time.time()}')
             self.before_next_page()
             #print('ReceiverWaitPage is_displayed')
 #             x = threading.Thread(target=self.before_next_page)
@@ -463,12 +469,13 @@ class ReceiverWaitPage(Page):
 
     def get_timeout_seconds(self):
         print('timeout begin')
+        print(f'the time in get_timeout_secondsis: {time.time()}')
         return 200
 
 
     # def before_next_page(self):
     #     print('ReceiverWaitPage before_next_page')
-    #     start_time = time.time()
+    #     start_time = 
     #     print('begin self.group.set_round_parameters()')
     #     self.group.set_round_parameters()
     #     print(f"--- self.group.set_round_parameters ---{time.time() - start_time}")
