@@ -328,7 +328,7 @@ class ReceiverWaitPage(Page):
                 new_df = pd.DataFrame(columns=self.player.participant.vars['df'].columns)
                 for round_ in range(1, 11):
                     # print(self.participant.vars['problem_parameters']['average_score'],'lplp')
-                    new_df.at[round_ - 1, 'player_id_in_group'] = self.player.id_in_group
+                    new_df.at[round_ - 1, 'player_id_in_group'] = 2
                     new_df.at[round_ - 1, 'status'] = 'play'
                     new_df.at[round_ - 1, 'group_negative_review_0'] = \
                         self.participant.vars['problem_parameters'].at[round_ - 1, 'negative_review_0']
@@ -400,7 +400,7 @@ class ReceiverWaitPage(Page):
             if self.group.round_number == 1:
                 for round_ in range(1, 11):
                     #print(self.participant.vars['problem_parameters']['average_score'],'lplp')
-                    self.player.participant.vars['df'].at[round_ - 1,'player_id_in_group'] = self.player.id_in_group
+                    self.player.participant.vars['df'].at[round_ - 1,'player_id_in_group'] = 2
                     self.player.participant.vars['df'].at[round_ - 1,'status'] = 'play'
                     self.player.participant.vars['df'].at[round_ - 1,'group_negative_review_0'] = self.participant.vars['problem_parameters'].at[round_ - 1,'negative_review_0']
                     self.player.participant.vars['df'].at[round_ - 1,'group_negative_review_1'] = self.participant.vars['problem_parameters'].at[round_ - 1,'negative_review_1']
