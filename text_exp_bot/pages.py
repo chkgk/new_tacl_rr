@@ -467,10 +467,10 @@ class ReceiverWaitPage(Page):
         if self.group.failed_intro_test != True:
             return True
 
-#     def get_timeout_seconds(self):
-#         print('timeout begin')
-#         print(f'the time in get_timeout_seconds is: {time.localtime()}')
-#         return 200
+    def get_timeout_seconds(self):
+        print('timeout begin')
+        print(f'the time in get_timeout_seconds is: {time.localtime()}')
+        return 1
 
 
     # def before_next_page(self):
