@@ -316,6 +316,7 @@ class ReceiverWaitPage(Page):
     timeout_seconds = 300
 
     def before_next_page(self):
+        print(f'the time in before_next_page is: {time.time()}, player: {self.player.participant.id_in_session}')
         # print(sum([1 for key,val in finish_mcts.items() if val ==True]), self.group.round_number-1)
         # receiver_finish_round[self.group.round_number-1] == finish_mcts[self.group.round_number-1] and  in_thred[0] == self.group.round_number - 1 and finish_mcts[self.group.round_number-1] == False and
         # if (self.group.round_number - 1) == sum([1 for key, val in finish_mcts.items() if val == True]):
@@ -470,7 +471,7 @@ class ReceiverWaitPage(Page):
     def get_timeout_seconds(self):
         print('timeout begin')
         print(f'the time in get_timeout_seconds is: {time.time()}')
-        return 300
+        return 2
 
 
     # def before_next_page(self):
