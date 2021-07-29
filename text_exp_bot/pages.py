@@ -561,6 +561,7 @@ class ReceiverPage(CustomMturkPage):
 
     def vars_for_template(self):
         # print('ReceiverPage vars_for_template')
+        print(f'the time in reciever page is: {time.time()}')
 
         if self.session.config['cond'] == 'verbal' or self.session.config['cond'] == 'only_text':
             score_all_review = self.group.sender_answer_reviews
