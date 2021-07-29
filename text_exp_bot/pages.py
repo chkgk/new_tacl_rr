@@ -313,7 +313,7 @@ def maya(df,round):
 
 class ReceiverWaitPage(Page):
     template_name = 'text_exp_bot/ReceiverWaitPage.html'
-    timeout_seconds = 200
+    timeout_seconds = 300
 
     def before_next_page(self):
         # print(sum([1 for key,val in finish_mcts.items() if val ==True]), self.group.round_number-1)
@@ -467,10 +467,10 @@ class ReceiverWaitPage(Page):
         if self.group.failed_intro_test != True:
             return True
 
-    def get_timeout_seconds(self):
-        print('timeout begin')
-        print(f'the time in get_timeout_secondsis: {time.time()}')
-        return 200
+#     def get_timeout_seconds(self):
+#         print('timeout begin')
+#         print(f'the time in get_timeout_secondsis: {time.time()}')
+#         return 200
 
 
     # def before_next_page(self):
