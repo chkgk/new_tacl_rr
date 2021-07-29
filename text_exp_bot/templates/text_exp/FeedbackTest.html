@@ -1,0 +1,50 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block app_styles %}
+<style>
+body {
+    font-family: Arial;
+    color: black;
+}
+
+div {
+  word-wrap: normal;
+}
+
+button {
+    word-wrap: normal;
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+            {% if receiver_not_paid == 0 %}
+                <p><b> You did not answer all the questions correctly, so we will reject your work and you will not be paid for this HIT.</b></p>
+            {% elif  receiver_not_paid == 1%}
+                <p><b> Good job! You answered all the questions correctly.</b></p>
+            {% else %}
+                <p><b>You answered correctly only on 3 questions, so you will not get your bonus.</b></p>
+            {% endif %}
+        {% if is_verbal %}
+            <h5>The texts you have actually seen are:</h5>
+            <p style="text-align: center">{{ chosen_reviews.0 }}</p>
+            <p style="text-align: center">{{ chosen_reviews.1 }}</p>
+        {% endif %}
+    </div>
+</div>
+
+    <div>
+        <button class="btn btn-primary btn-large">
+        {% if receiver_not_paid  == 0 %}
+            Submit the HIT
+        {% else %}
+            Go to experiment results
+        {% endif %}
+        </button>
+    </div>
+{% endblock %}
