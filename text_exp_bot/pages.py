@@ -27,7 +27,7 @@ import threading
 
 
 class Introduction(CustomMturkPage):
-    template_name = 'text_exp/Introduction.html'
+    template_name = 'text_exp_bot/Introduction.html'
     form_model = 'player'
     form_fields = ['intro_test']
 
@@ -86,7 +86,7 @@ class AfterIntroTest(WaitPage):
 
 
 class IntroTimeout(CustomMturkPage):
-    template_name = 'text_exp/IntroTimeout.html'
+    template_name = 'text_exp_bot/IntroTimeout.html'
 
     def get_timeout_seconds(self):
         return 30
@@ -147,7 +147,7 @@ class IntroTimeout(CustomMturkPage):
 
 
 class IntroTestFeedback(CustomMturkPage):
-    template_name = 'text_exp/IntroTestFeedback.html'
+    template_name = 'text_exp_bot/IntroTestFeedback.html'
 
     def get_timeout_seconds(self):
         return 30
@@ -202,7 +202,7 @@ class IntroTestFeedback(CustomMturkPage):
 
 
 class PersonalInformation(CustomMturkPage):
-    template_name = 'text_exp/PersonalInformation.html'
+    template_name = 'text_exp_bot/PersonalInformation.html'
     form_model = 'player'
     form_fields = ['name', 'age', 'gender', 'is_student', 'occupation', 'residence']
 
@@ -245,7 +245,7 @@ class AfterInstructions(WaitPage):
 
 
 class SenderPage(CustomMturkPage):
-    template_name = 'text_exp/SenderPage.html'
+    template_name = 'text_exp_bot/SenderPage.html'
     form_model = 'group'
     form_fields = ['sender_answer_index']
 
@@ -312,7 +312,7 @@ def maya(df,round):
 
 
 class ReceiverWaitPage(Page):
-    template_name = 'text_exp/ReceiverWaitPage.html'
+    template_name = 'text_exp_bot/ReceiverWaitPage.html'
     timeout_seconds = 200
 
     def before_next_page(self):
@@ -525,7 +525,7 @@ class ReceiverWaitPage(Page):
     # #print("--- %s seconds ---" % (time.time() - start_time))
 
 class ReceiverPage(CustomMturkPage):
-    template_name = 'text_exp/ReceiverPage.html'
+    template_name = 'text_exp_bot/ReceiverPage.html'
     form_model = 'group'
     form_fields = ['receiver_choice']
 
@@ -579,7 +579,7 @@ class ReceiverPage(CustomMturkPage):
 class Results(CustomMturkPage):
     """This page displays the result of the round - what the receiver choose and what was the result of the lottery"""
 
-    template_name = 'text_exp/Results.html'
+    template_name = 'text_exp_bot/Results.html'
 
     def is_displayed(self):
         if self.group.failed_intro_test != True:
@@ -668,7 +668,7 @@ class Test(CustomMturkPage):
     """
     This page will be displayed only to the DM in the verbal condition, in order to test them if they read the texts.
     """
-    template_name = 'text_exp/Test.html'
+    template_name = 'text_exp_bot/Test.html'
     form_model = 'player'
     form_fields = ['dm_test_chosen_review_1', 'dm_test_chosen_review_2',
                    'dm_test_not_chosen_review_1', 'dm_test_not_chosen_review_2']
@@ -747,7 +747,7 @@ class FeedbackTest(CustomMturkPage):
     """
     This page will be displayed only to the DM in the verbal condition, this will be the feedback for the DM test
     """
-    template_name = 'text_exp/FeedbackTest.html'
+    template_name = 'text_exp_bot/FeedbackTest.html'
 
     def is_displayed(self):
         if not self.player.participant.vars.get('go_to_the_end', False):  # players who didn't get a partner
@@ -779,7 +779,7 @@ class FeedbackTest(CustomMturkPage):
 #     This page will be displayed after the last round is over - the experiment is finish.
 #     It will display the results: the payoff of each player
 #     """
-#     template_name = 'text_exp/GameOver.html'
+#     template_name = 'text_exp_bot/GameOver.html'
 #
 #     def is_displayed(self):# show this page only after the last round  
 #         if not self.player.participant.vars.get('go_to_the_end', False):
@@ -877,7 +877,7 @@ class GameOver(Page):
     This page will be displayed after the last round is over - the experiment is finish.
     It will display the results: the payoff of each player
     """
-    template_name = 'text_exp/GameOver.html'
+    template_name = 'text_exp_bot/GameOver.html'
 
     def is_displayed(self):
         # show this page only after the last round
@@ -938,7 +938,7 @@ class OnePlayerWait(Page):
     """
     This page will be shown if only one player get into the experiment, and after 10 minutes decided to quit
     """
-    template_name = 'text_exp/OnePlayerWait.html'
+    template_name = 'text_exp_bot/OnePlayerWait.html'
 
     def is_displayed(self):
         # This page inherits only from Page not from CustomMturkPage: Will appear even to players who have hit the
@@ -976,7 +976,7 @@ class AfterAutoSubmit(Page):
     """
     This page will be shown to players that their HIT was automatically submitted
     """
-    template_name = 'text_exp/afterAutoSubmit.html'
+    template_name = 'text_exp_bot/afterAutoSubmit.html'
 
     def is_displayed(self):
         return (self.round_number == 1 and self.player.participant.vars.get('automate_timeout', False)) or\

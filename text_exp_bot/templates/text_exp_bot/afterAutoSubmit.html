@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block app_styles %}
+<style>
+body {
+    font-family: Arial;
+    color: black;
+}
+
+div {
+  word-wrap: normal;
+}
+
+button {
+    word-wrap: normal;
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+        <p>You are unable to complete the HIT because {{ reason }}.</p>
+    {% if reject %}
+        <p>Please return it to prevent rejection.</p>
+    {% else %}
+        <p>Your payoff for waiting is: ${{ payment }} and we invite you to retake this HIT.</p>
+    {% endif %}
+    </div>
+</div>
+
+    <div>
+        <button class="btn btn-primary btn-large">
+            Submit the HIT
+        </button>
+    </div>
+{% endblock %}

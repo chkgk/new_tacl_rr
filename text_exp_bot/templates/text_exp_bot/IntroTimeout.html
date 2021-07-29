@@ -1,0 +1,39 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block app_styles %}
+<style>
+body {
+    font-family: Arial;
+    color: black;
+}
+
+div {
+  word-wrap: normal;
+}
+
+button {
+    word-wrap: normal;
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="card bg-light instructions">
+    <div class="card-body">
+            {% if participant_timeout %}
+                <p>You did not {{ page_name }} within the time you had.
+                    You will be automatically moved to the next page.</p>
+            {% elif partner_timeout %}
+                <p>You partner did not finish to {{ page_name }} yet and we don't want you to wait anymore.
+                Therefore you are unable to complete this HIT.</p>
+                <p>You will be automatically moved to the next page.</p>
+            {% endif %}
+    </div>
+</div>
+
+    {% next_button %}
+
+{% endblock %}
