@@ -475,7 +475,7 @@ class ReceiverWaitPage(Page):
             self.before_next_page()
         print('timeout begin')
         print(f'the time in get_timeout_seconds is: {time.time()}')
-        return 400
+        return 1
 
 
     # def before_next_page(self):
