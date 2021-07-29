@@ -10,9 +10,9 @@ import time
 #import pandas as pd
 
 base_directory = os.path.abspath(os.curdir)
-data_directory = os.path.join(base_directory, 'text_exp')
+data_directory = os.path.join(base_directory, 'text_exp_bot')
 reviews_not_seen_file_path = os.path.join(data_directory, 'reviews_not_seen.csv')
-image_directory = os.path.join(base_directory, '_static', 'text_exp')
+image_directory = os.path.join(base_directory, '_static', 'text_exp_bot')
 
 author = 'Maya Tarno'
 
@@ -21,7 +21,7 @@ doc = """
 
 
 class Constants(BaseConstants):
-    name_in_url = 'text_exp'
+    name_in_url = 'text_exp_bot'
     players_per_group = None
     num_rounds = 10
     sender_payoff_per_round = 1
@@ -371,3 +371,4 @@ class Session:
     num_participants = 1
     #problems_data_file_path = os.path.join(data_directory, f"{self.session.config['review_file_name']}.csv")
     #problems = pd.read_csv(problems_data_file_path, header=0).sample(frac=1).reset_index(drop=True)
+
