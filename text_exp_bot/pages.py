@@ -453,9 +453,10 @@ class ReceiverWaitPage(Page):
         # if self.group.round_number not in action.keys():
         if self.group.action == 10:  # this round has not run yet
             self.group.set_round_parameters()
+            self.before_next_page()
             #print('ReceiverWaitPage is_displayed')
-            x = threading.Thread(target=self.before_next_page)
-            x.start()
+#             x = threading.Thread(target=self.before_next_page)
+#             x.start()
             #print('continue to get timeout')
         if self.group.failed_intro_test != True:
             return True
