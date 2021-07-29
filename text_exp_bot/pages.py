@@ -457,10 +457,10 @@ class ReceiverWaitPage(Page):
 
     def is_displayed(self):
         # if self.group.round_number not in action.keys():
-        if self.group.action == 10:  # this round has not run yet
-            self.group.set_round_parameters()
-            print(f'the time in is_displayed is: {time.time()}')
-            self.before_next_page()
+#         if self.group.action == 10:  # this round has not run yet
+#             self.group.set_round_parameters()
+#             print(f'the time in is_displayed is: {time.time()}')
+#             self.before_next_page()
             #print('ReceiverWaitPage is_displayed')
 #             x = threading.Thread(target=self.before_next_page)
 #             x.start()
@@ -469,9 +469,13 @@ class ReceiverWaitPage(Page):
             return True
 
     def get_timeout_seconds(self):
+        if self.group.action == 10:  # this round has not run yet
+            self.group.set_round_parameters()
+            print(f'the time in is_displayed is: {time.time()}')
+            self.before_next_page()
         print('timeout begin')
         print(f'the time in get_timeout_seconds is: {time.time()}')
-        return 2
+        return 400
 
 
     # def before_next_page(self):
