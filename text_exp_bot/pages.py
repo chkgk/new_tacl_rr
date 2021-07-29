@@ -463,7 +463,7 @@ class ReceiverWaitPage(Page):
 
     def get_timeout_seconds(self):
         print('timeout begin')
-        return 40#120
+        return 120
 
 
     # def before_next_page(self):
