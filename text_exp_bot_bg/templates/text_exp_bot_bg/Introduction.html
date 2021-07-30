@@ -1,0 +1,276 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block title %}
+    Welcome to the experiment!
+{% endblock %}
+
+{% block content %}
+<div class="card bg-light instructions">
+    <div class="card-body">
+    <h3>
+        Instructions
+    </h3>
+        <p><b>You have {{ Constants.intro_timeout_minutes }} minutes to finish reading the instructions!
+            If you are not to meet this deadline, the HIT will be automatically submitted, and you will not get paid.</b></p>
+    <p>
+        You are invited to participate in an experiment.
+    The experiment is part of a research conducted in the Industrial Engineering and Management Faculty of the Technion, Haifa.
+
+    </p>
+        {% if player.role == 'Decision Maker' and not num_condition%}
+
+        <p>
+            <b>Pay attention:</b> at the end of the experiment, you will be asked to answer one simple question
+            to verify you indeed read the texts in the experiment.
+            If you do not answer it correctly, we will reject your work, and you will not get paid.
+        </p>
+        {% endif %}
+
+        {% if player.role == 'Decision Maker' and num_condition%}
+
+        <p>
+            <b>Pay attention:</b> at the end of the experiment, you will be asked to answer one simple question
+            to verify you indeed paid attention to the details in the experiment.
+            If you do not answer it correctly, we will reject your work, and you will not get paid.
+        </p>
+        {% endif %}
+
+
+    <p>You have been randomly and anonymously paired with another participant.
+        You were randomly selected to be the <b><u>{{ player.role }}</u></b>
+        {% if player.role == 'Expert' %}
+            (a travel agent),
+        {% else %}
+            (a traveler),
+        {% endif %}
+        while your partner is the <b><u>{{ other_role }}</u></b>
+        {% if player.role == 'Expert' %}
+            (your client).
+        {% else %}
+            (your travel agent).
+        {% endif %}
+    </p>
+    <p>
+        The experiment consists of {{ Constants.num_rounds }} trials, played one after the other.
+        All trials will be played with the same partner, and each of you will have the same role during the whole experiment.
+    </p>
+    <p>
+        In each trial,
+        {% if player.role == 'Expert' %}
+            you will be asked to sell to your client (the {{ other_role }}) a different hotel,
+            and s/he will be asked to choose between the ‘Hotel’ (that provides a gain or a loss),
+            and ‘stay at home’ (payoff 0 with certainty).
+        {% else %}
+            the {{ other_role }} will try to sell you a different hotel, and you will be asked to choose between the ‘Hotel’
+            (that provide a gain or a loss), and ‘stay at home’ (payoff 0 with certainty).
+        {% endif %}
+    </p>
+
+    <p>
+        {% if player.role == 'Expert' %}
+            The {{ other_role }}
+        {% else %}
+            You
+        {% endif %}
+            will not have prior information about the hotel.
+    </p>
+
+    <p>
+        {% if player.role == 'Expert' %}
+            You will get a sample of {{ Constants.number_reviews_per_hotel }}
+
+        {% if only_num_condition %}
+            scores that were given by previous visitors to the hotel.
+        {% elif only_text_condition %}
+            reviews that were given by previous visitors to the hotel.
+        {% else %}
+            reviews that were written by previous visitors to the hotel and their scores.
+        {% endif %}
+
+        You will be asked to choose one of those
+            {% if num_condition %}
+                scores
+            {% elif both_condition %}
+                reviews and its score
+            {% else %}
+                reviews
+            {% endif %}
+            and <b>only this
+
+            {% if num_condition %}
+                score
+            {% elif both_condition %}
+                review and score
+            {% else %}
+                review
+            {% endif %}</b>
+            will be shown to your partner as an
+
+        {% else %}
+            The {{ other_role }} will have some information and will send you a
+            {% if num_condition %}
+                numerical
+            {% elif both_condition %}
+                verbal estimation with its numerical
+            {% else %}
+                verbal
+            {% endif %}
+
+        {% endif %}
+
+        estimation of the hotel’s quality.
+    </p>
+
+    <p>
+        {% if player.role == 'Decision Maker' %}
+            The choice will be made by clicking on one of the buttons: ‘Hotel’ or ‘Stay at home’.
+        {% endif %}
+    </p>
+
+    <p>
+        {% if player.role == 'Expert' %}
+            Your payoff in each trial will be a gain of 1 point if the {{ other_role }} chose Hotel, and 0 points otherwise.
+        {% else %}
+            The {{ other_role }} will gain of 1 point if you choose Hotel, and 0 points otherwise.
+        {% endif %}
+    </p>
+    <p>
+
+        {% if player.role == 'Expert' %}
+            The {{ other_role }}'s
+        {% else %}
+            Your
+        {% endif %}
+        payoff will be as following:
+        <ul>
+            <li>If
+            {% if player.role == 'Expert' %}
+                s/he chooses
+            {% else %}
+                you choose
+            {% endif %}
+                 the 'Hotel' option,
+
+            {% if player.role == 'Expert' %}
+                her/his
+            {% else %}
+                your
+            {% endif %}
+
+                payoff will be the benefit from the hotel minus a fixed cost of {{ Constants.cost }} points.
+                After each of you has made your choices, the benefit will be chosen randomly from the
+            {% if player.role == 'Expert' %}
+                {% if only_text_condition %}
+                    scores given by previous visitors to this hotel.
+                {% else %}
+                    7 given scores.
+                {% endif %}
+            {% else %}
+                scores given by previous visitors to this hotel.
+            {% endif %}
+                All scores are in the range between 2.5 and 10.
+            </li>
+
+            <li>If
+                {% if player.role == 'Expert' %}
+                    the {{ other_role }} chooses
+                {% else %}
+                    you choose
+                {% endif %}
+                the 'Stay at Home' option,
+                {% if player.role == 'Expert' %}
+                    his/her
+                {% else %}
+                    your
+                {% endif %}
+                payoff will be 0.
+            </li>
+        </ul>
+    </p>
+    <p>
+        In the comment text box below, please type "sdkot" (without commas and quotes),
+        so we can be sure you are reading this. If you fail to do so, you will be unable to complete this HIT.
+        You have to be quick. You will have
+        {% if player.role == 'Expert' %}
+            {{ Constants.seconds_wait_first_rounds_expert }}
+            seconds to respond in the first {{ Constants.num_rounds_long_wait }} trials,
+            and {{ Constants.seconds_wait_expert }} seconds for the subsequent trials.
+        {% else %}
+            {{ Constants.seconds_wait_first_rounds_dm }}
+            seconds to respond in the first {{ Constants.num_rounds_long_wait }} trials,
+            and {{ Constants.seconds_wait_dm }} seconds for the subsequent trials.
+        {% endif %}
+
+        {% if player.role == 'Expert' %}
+            If you are not to meet these deadlines, the {{ other_role }} will receive the
+            {% if num_condition %}
+                lowest score (out of the 7 scores),
+            {% else %}
+                review with the lowest score,
+            {% endif %}
+                and your payoff for the trial will be 0.
+        {% else %}
+            If you are not to meet these deadlines, one of the options will be chosen randomly.
+            If the {{ other_role }} is too slow, you will receive a default evaluation.
+        {% endif %}
+    </p>
+        {% if player.role == 'Decision Maker' %}
+
+            <p><b>Please be patient;</b>
+            the {{ other_role }}'s role requires more time. Therefore, there will be a gap between one trial to another.</p>
+        {% endif %}
+    <h5>Risks and benefits:</h5>
+        <p>
+            There is no risk. Your benefit is contributing to a research project.
+        </p>
+
+    <h5> Compensation: </h5>
+        <p>
+            You will get {{ participation_fee }} for your participation.
+            At the end of the experiment, the accumulated points will set your probability
+            to get a bonus of ${{ Constants.bonus }}.
+        </p>
+        <p>
+            Your goal is to maximize your earnings.
+        </p>
+        <p>
+            {% if player.role == 'Decision Maker' %}
+                You will get {{ initial_points_dc }} points at the beginning of the experiment.
+            {% endif %}
+        </p>
+
+
+    <h5>Voluntary participation and right to withdraw:</h5>
+        <p>
+            Participation in this study is voluntary, and you can stop at any time without any penalty.
+            To finish, click on the “Return HIT” button or close your browser window.
+        </p>
+
+    <h5> Contact information: </h5>
+        <p>
+            If you have any concerns or questions about this research,
+            you may contact: Reut Apel at reutapel@campus.technion.ac.il.
+        </p>
+
+        <h5>Have Fun!</h5>
+
+    </div>
+</div>
+
+<p>{% formfield player.intro_test %}</p>
+
+    <h5>
+            Clicking accept
+    </h5>
+        <p>
+           By clicking on the “I agree” button, you indicate that you voluntarily agree to participate in this experiment
+            and that you understand the information in this form.
+        </p>
+    <div>
+        <button class="btn btn-primary btn-large" name="receiver_choice" value="True">I agree! Let's start!</button>
+    </div>
+
+
+{% endblock %}

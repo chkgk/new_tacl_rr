@@ -1,0 +1,1 @@
+default_app_config = 'text_exp_bot_bg.apps.MyAppConfig'
