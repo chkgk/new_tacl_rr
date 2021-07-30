@@ -536,9 +536,9 @@ class Results(CustomMturkPage):
         if self.player.participant.vars['round_parameters'].at[self.group.round_number-1,
                                                                'group_sender_answer_reviews'][0] == 'P':
             self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'review_id'] = \
-                reviews_features[(reviews_features.hotel == self.player.participant.vars['df'].at[
+                reviews_features[(reviews_features.hotel == self.player.participant.vars['round_parameters'].at[
                     self.group.round_number-1, 'group_average_score']) &
-                                 (reviews_features.rev_index == self.player.participant.vars['df'].at[
+                                 (reviews_features.rev_index == self.player.participant.vars['round_parameters'].at[
                                      self.group.round_number-1,'group_sender_answer_index']) & (
                     reviews_features.posorneg == 'Positive')]['review_id'].values[0]
 
@@ -549,7 +549,7 @@ class Results(CustomMturkPage):
                                  (reviews_features.rev_index == self.player.participant.vars['round_parameters'].at[
                                      self.group.round_number-1,'group_sender_answer_index']) & (
                 reviews_features.posorneg == 'Negative')]['review_id'].values[0]
-        # print(self.player.participant.vars['df'].at[self.group.round_number-1,'review_id'],'maya_test')
+        # print(self.player.participant.vars['round_parameters'].at[self.group.round_number-1,'review_id'],'maya_test')
 
         if self.group.receiver_choice:  # if the receiver chose Status quo
             receiver_choice = 'Stay at home'
