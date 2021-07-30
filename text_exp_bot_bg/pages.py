@@ -502,35 +502,59 @@ class Results(CustomMturkPage):
     #         return False
 
     def vars_for_template(self):
-        self.player.participant.vars['df'].at[self.group.round_number-1,'subsession_round_number']=self.group.round_number
-        self.player.participant.vars['df'].at[self.group.round_number-1,'group_receiver_payoff']=self.group.receiver_payoff
-        self.player.participant.vars['df'].at[self.group.round_number-1,'group_sender_payoff']=(1 if self.group.receiver_payoff!=0 else 0)
-        self.player.participant.vars['df'].at[self.group.round_number-1,'chose_lose']=(1 if self.group.receiver_payoff<0 else 0)
-        self.player.participant.vars['df'].at[self.group.round_number-1,'chose_earn']=(1 if self.group.receiver_payoff>0 else 0)
-        self.player.participant.vars['df'].at[self.group.round_number-1,'not_chose_lose']=(1 if self.group.receiver_payoff==0 and None else 0)
-        self.player.participant.vars['df'].at[self.group.round_number-1,'not_chose_earn']=(1 if self.group.receiver_payoff==0 and None else 0)
-        self.player.participant.vars['df'].at[self.group.round_number-1,'group_sender_answer_scores']=self.group.sender_answer_scores
-        self.player.participant.vars['df'].at[self.group.round_number-1,'group_sender_answer_index']=self.group.sender_answer_index
-        self.player.participant.vars['df'].at[self.group.round_number-1,'group_average_score']=round(self.group.average_score,2)
-        self.player.participant.vars['df'].at[self.group.round_number-1,'group_sender_answer_reviews']=self.group.sender_answer_reviews
-        self.player.participant.vars['df'].at[self.group.round_number-1,'group_lottery_result']=self.group.lottery_result
-        self.player.participant.vars['df'].at[self.group.round_number-1,'lottery_result_low']=(1 if self.group.lottery_result<3 else 0)
-        self.player.participant.vars['df'].at[self.group.round_number-1,'lottery_result_med1'] = (1 if (self.group.lottery_result>=3 and self.group.lottery_result<=5) else 0)
-        self.player.participant.vars['df'].at[self.group.round_number-1,'lottery_result_high']=(1 if self.group.lottery_result>=8 else 0)
+        self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'subsession_round_number'] =\
+            self.group.round_number
+        self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'group_receiver_payoff'] =\
+            self.group.receiver_payoff
+        self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'group_sender_payoff'] =\
+            (1 if self.group.receiver_payoff != 0 else 0)
+        self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'chose_lose'] =\
+            (1 if self.group.receiver_payoff < 0 else 0)
+        self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'chose_earn'] =\
+            (1 if self.group.receiver_payoff > 0 else 0)
+        self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'not_chose_lose'] =\
+            (1 if self.group.receiver_payoff == 0 and None else 0)
+        self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'not_chose_earn'] =\
+            (1 if self.group.receiver_payoff == 0 and None else 0)
+        self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'group_sender_answer_scores'] =\
+            self.group.sender_answer_scores
+        self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'group_sender_answer_index'] =\
+            self.group.sender_answer_index
+        self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'group_average_score'] =\
+            round(self.group.average_score,2)
+        self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'group_sender_answer_reviews'] =\
+            self.group.sender_answer_reviews
+        self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'group_lottery_result'] =\
+            self.group.lottery_result
+        self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'lottery_result_low'] =\
+            (1 if self.group.lottery_result<3 else 0)
+        self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'lottery_result_med1'] = \
+            (1 if (self.group.lottery_result >= 3 and self.group.lottery_result <= 5) else 0)
+        self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'lottery_result_high'] =\
+            (1 if self.group.lottery_result>=8 else 0)
         reviews_features = pd.read_csv('mcts_/hotels_index_test_data.csv')
-        if self.player.participant.vars['df'].at[self.group.round_number-1,'group_sender_answer_reviews'][0] == 'P':
-            self.player.participant.vars['df'].at[self.group.round_number-1,'review_id']= reviews_features[(reviews_features.hotel == self.player.participant.vars['df'].at[self.group.round_number-1,'group_average_score']) & (reviews_features.rev_index == self.player.participant.vars['df'].at[self.group.round_number-1,'group_sender_answer_index']) & (
+        if self.player.participant.vars['round_parameters'].at[self.group.round_number-1,
+                                                               'group_sender_answer_reviews'][0] == 'P':
+            self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'review_id'] = \
+                reviews_features[(reviews_features.hotel == self.player.participant.vars['df'].at[
+                    self.group.round_number-1, 'group_average_score']) &
+                                 (reviews_features.rev_index == self.player.participant.vars['df'].at[
+                                     self.group.round_number-1,'group_sender_answer_index']) & (
                     reviews_features.posorneg == 'Positive')]['review_id'].values[0]
 
         else:
-            self.player.participant.vars['df'].at[self.group.round_number-1,'review_id']=reviews_features[(reviews_features.hotel == self.player.participant.vars['df'].at[self.group.round_number-1,'group_average_score']) & (reviews_features.rev_index == self.player.participant.vars['df'].at[self.group.round_number-1,'group_sender_answer_index']) & (
+            self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'review_id'] =\
+                reviews_features[(reviews_features.hotel == self.player.participant.vars['round_parameters'].at[
+                    self.group.round_number-1,'group_average_score']) &
+                                 (reviews_features.rev_index == self.player.participant.vars['round_parameters'].at[
+                                     self.group.round_number-1,'group_sender_answer_index']) & (
                 reviews_features.posorneg == 'Negative')]['review_id'].values[0]
-        #print(self.player.participant.vars['df'].at[self.group.round_number-1,'review_id'],'maya_test')
+        # print(self.player.participant.vars['df'].at[self.group.round_number-1,'review_id'],'maya_test')
 
         if self.group.receiver_choice:  # if the receiver chose Status quo
             receiver_choice = 'Stay at home'
             other_choice = 'Hotel'
-            #print('self.group.lottery_result: ', self.group.lottery_result)
+            # print('self.group.lottery_result: ', self.group.lottery_result)
             other_gain_receiver = self.group.lottery_result - Constants.cost
             receiver_payoff = 0
             if other_gain_receiver < 0:
@@ -911,7 +935,7 @@ class AfterAutoSubmit(Page):
         else:
             reason = ''
             reject = True
-        #self.player.participant.vars['df'].to_csv('oTree_mturk/mcts_/test_df.csv')
+        # self.player.participant.vars['df'].to_csv('oTree_mturk/mcts_/test_df.csv')
         return {
             'reason': reason,
             'reject': reject,
