@@ -8,6 +8,9 @@ import time
 import gc
 import pandas as pd
 import threading
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
+channel_layer = get_channel_layer()
 
 # action = {}
 # in_thred = {0:0}
@@ -326,7 +329,16 @@ class ReceiverWaitPage(Page):
             print(f'enter to "if"')
             # action[self.group.round_number] = mcts_live_simu(new_df, self.group.round_number)
             print(f'the time is: {time.time()}')
-            self.group.action = mcts_live_simu(self.player.participant.vars['round_parameters'], self.group.round_number)
+            self.group.action = async_to_sync(channel_layer.send)(
+                "backgroundworker",
+            {
+                "type": "call_mcts",
+                "round_parameters": self.player.participant.vars['round_parameters'],
+                "round_number": self.round_number,
+            },
+        )
+
+            # self.group.action = mcts_live_simu(self.player.participant.vars['round_parameters'], self.group.round_number)
             print(f'the time is: {time.time()}')
 
         else:
@@ -536,9 +548,9 @@ class Results(CustomMturkPage):
         if self.player.participant.vars['round_parameters'].at[self.group.round_number-1,
                                                                'group_sender_answer_reviews'][0] == 'P':
             self.player.participant.vars['round_parameters'].at[self.group.round_number-1, 'review_id'] = \
-                reviews_features[(reviews_features.hotel == self.player.participant.vars['round_parameters'].at[
+                reviews_features[(reviews_features.hotel == self.player.participant.vars['df'].at[
                     self.group.round_number-1, 'group_average_score']) &
-                                 (reviews_features.rev_index == self.player.participant.vars['round_parameters'].at[
+                                 (reviews_features.rev_index == self.player.participant.vars['df'].at[
                                      self.group.round_number-1,'group_sender_answer_index']) & (
                     reviews_features.posorneg == 'Positive')]['review_id'].values[0]
 
@@ -549,7 +561,7 @@ class Results(CustomMturkPage):
                                  (reviews_features.rev_index == self.player.participant.vars['round_parameters'].at[
                                      self.group.round_number-1,'group_sender_answer_index']) & (
                 reviews_features.posorneg == 'Negative')]['review_id'].values[0]
-        # print(self.player.participant.vars['round_parameters'].at[self.group.round_number-1,'review_id'],'maya_test')
+        # print(self.player.participant.vars['df'].at[self.group.round_number-1,'review_id'],'maya_test')
 
         if self.group.receiver_choice:  # if the receiver chose Status quo
             receiver_choice = 'Stay at home'
