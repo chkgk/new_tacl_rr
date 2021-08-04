@@ -59,15 +59,15 @@ SESSION_CONFIGS = [
         'cond': 'verbal',
         'review_file_name': '10_reviews',
     },
-    {
-        'name': 'text_exp_bot_bg',
-        'display_name': 'text_exp_bot_bg',
-        'num_demo_participants': 1,
-        'app_sequence': ['text_exp_bot_bg'],
-        'use_browser_bots': False,
-        'cond': 'verbal',
-        'review_file_name': '10_reviews',
-    },
+#     {
+#         'name': 'text_exp_bot_bg',
+#         'display_name': 'text_exp_bot_bg',
+#         'num_demo_participants': 1,
+#         'app_sequence': ['text_exp_bot_bg'],
+#         'use_browser_bots': False,
+#         'cond': 'verbal',
+#         'review_file_name': '10_reviews',
+#     },
     
 ]
 
