@@ -170,7 +170,6 @@ class Subsession(BaseSubsession):
                         # X- if X is the result --> this is the real maximum points from this experiment
                         p.participant.vars['max_points'] = math.fabs(worst_case_receiver)
 
-
         return
 
 
@@ -380,10 +379,7 @@ class Player(BasePlayer):
         verbose_name='Did you see this during the experiment?',
         widget=widgets.RadioSelect
     )
-    # dm_test_chosen_review_3 = models.BooleanField(
-    #     verbose_name='Did you see this text during the experiment?',
-    #     widget=widgets.RadioSelect
-    # )
+
     dm_test_not_chosen_review_1 = models.BooleanField(
         verbose_name='Did you see this during the experiment?',
         widget=widgets.RadioSelect
@@ -392,10 +388,8 @@ class Player(BasePlayer):
         verbose_name='Did you see this during the experiment?',
         widget=widgets.RadioSelect
     )
-    # dm_test_not_chosen_review_3 = models.BooleanField(
-    #     verbose_name='Did you see this text during the experiment?',
-    #     widget=widgets.RadioSelect
-    # )
+    action_id = models.StringField()
+
 
     def role(self):
         return {1: 'Decision Maker'}[self.id_in_group]#1: 'Expert',

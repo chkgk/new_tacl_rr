@@ -8,9 +8,7 @@ import time
 import gc
 import pandas as pd
 import threading
-from asgiref.sync import async_to_sync
-from channels.layers import get_channel_layer
-channel_layer = get_channel_layer()
+from background.tasks import huey, start_mcts
 
 # action = {}
 # in_thred = {0:0}
@@ -238,12 +236,6 @@ class PersonalInformation(CustomMturkPage):
 
 class AfterInstructions(WaitPage):
     def is_displayed(self):  # show this page only in round 1: in the beginning of the game
-        # players_failed_intro = list()
-        # for p in self.group.get_players():
-        #     if p.participant.vars.get('go_to_the_end', False):  # players who didn't get a partner
-        #         return False
-        #     else:
-        #         players_failed_intro.append(p.participant.vars.get('failed_intro_test'))
         return self.round_number == 1 and not self.group.instruction_timeout and not self.group.failed_intro_test
 
 
@@ -316,39 +308,31 @@ def maya(df, round):
 
 class ReceiverWaitPage(Page):
     template_name = 'text_exp_bot_bg/ReceiverWaitPage.html'
-    timeout_seconds = 200
+    timeout_seconds = 220
 
-    def before_next_page(self):
-        # print(sum([1 for key,val in finish_mcts.items() if val ==True]), self.group.round_number-1)
-        # receiver_finish_round[self.group.round_number-1] == finish_mcts[self.group.round_number-1] and  in_thred[0] == self.group.round_number - 1 and finish_mcts[self.group.round_number-1] == False and
-        # if (self.group.round_number - 1) == sum([1 for key, val in finish_mcts.items() if val == True]):
-        if not self.group.finish_mcts:
-            #in_thred[0] = in_thred[0] + 1
-            # finish_mcts[self.group.round_number-1] = True
-            self.group.finish_mcts = True
-            print(f'enter to "if"')
-            # action[self.group.round_number] = mcts_live_simu(new_df, self.group.round_number)
-            print(f'the time is: {time.time()}')
-            self.group.action = async_to_sync(channel_layer.send)(
-                "backgroundworker",
-            {
-                "type": "call_mcts",
-                "round_parameters": self.player.participant.vars['round_parameters'],
-                "round_number": self.round_number,
-            },
-        )
+    def live_method(self, data):
+        if data['message'] == 'start':
+            self.group.set_round_parameters()
+            # when the player clicks the start button, we start the long-running task and store its id
+            action = start_mcts(self.player.participant.vars['round_parameters'], self.group.round_number)
+            self.player.action_id = action.id
 
-            # self.group.action = mcts_live_simu(self.player.participant.vars['round_parameters'], self.group.round_number)
-            print(f'the time is: {time.time()}')
-
-        else:
-            print('enter to "else"')
-            print(f'the time is: {time.time()}')
+        # the client will ask us for the result over and over again.
+        # we check if it is unequal "none". If so, we got a result and can store and return it.
+        if data['message'] == 'get_result':
             try:
+                action = huey.result(self.player.action_id)
+            except TypeError:
+                action = None
+
+            if action:
+                # store the result
+                self.player.action = action
                 print('after_mcts!')
                 self.group.sender_answer_index = self.group.action if self.group.action is not None else 6
                 print(f'mcts_result:{self.group.sender_answer_index}')
-                round_parameters = self.player.participant.vars['problem_parameters'].loc[self.group.round_number - 1]
+                round_parameters = self.player.participant.vars['problem_parameters'].loc[
+                    self.group.round_number - 1]
                 self.group.sender_answer_scores = round_parameters[f'score_{self.group.sender_answer_index}']
                 self.group.sender_answer_reviews = \
                     round_parameters[f'random_positive_negative_review_{self.group.sender_answer_index}']
@@ -358,84 +342,27 @@ class ReceiverWaitPage(Page):
                 self.group.sender_answer_negative_reviews = \
                     round_parameters[f'negative_review_{self.group.sender_answer_index}']
                 print('table results are updated!')
-            except:
-                None
+                return {self.player.id_in_group: {'message': 'action', 'action': action}}
+
+    # def before_next_page(self):
+    #     print('after_mcts!')
+    #     self.group.sender_answer_index = self.group.action if self.group.action is not None else 6
+    #     print(f'mcts_result:{self.group.sender_answer_index}')
+    #     round_parameters = self.player.participant.vars['problem_parameters'].loc[self.group.round_number - 1]
+    #     self.group.sender_answer_scores = round_parameters[f'score_{self.group.sender_answer_index}']
+    #     self.group.sender_answer_reviews = \
+    #         round_parameters[f'random_positive_negative_review_{self.group.sender_answer_index}']
+    #     print(f'mcts_rev: {self.group.sender_answer_reviews}')
+    #     self.group.sender_answer_positive_reviews = \
+    #         round_parameters[f'positive_review_{self.group.sender_answer_index}']
+    #     self.group.sender_answer_negative_reviews = \
+    #         round_parameters[f'negative_review_{self.group.sender_answer_index}']
+    #     print('table results are updated!')
 
     def is_displayed(self):
-        # if self.group.round_number not in action.keys():
-        if self.group.action == 10:  # this round has not run yet
-            self.group.set_round_parameters()
-            self.before_next_page()
-            # print('ReceiverWaitPage is_displayed')
-            # x = threading.Thread(target=self.before_next_page)
-            # x.start()
-            # print('continue to get timeout')
         if not self.group.failed_intro_test:
             return True
 
-    def get_timeout_seconds(self):
-        print('timeout begin')
-        return 40#120
-
-
-    # def before_next_page(self):
-    #     print('ReceiverWaitPage before_next_page')
-    #     start_time = time.time()
-    #     print('begin self.group.set_round_parameters()')
-    #     self.group.set_round_parameters()
-    #     print(f"--- self.group.set_round_parameters ---{time.time() - start_time}")
-    #     start_time = time.time()
-    #
-    #     #print('mayaaaa')
-    #     #print(self.group.random_positive_negative_review_0)
-    #     if self.group.round_number==1:
-    #         for round_ in range(1,11):
-    #             #print(self.participant.vars['problem_parameters']['average_score'],'lplp')
-    #             self.player.participant.vars['df'].at[round_ - 1,'player_id_in_group'] = 2
-    #             self.player.participant.vars['df'].at[round_ - 1,'status'] = 'play'
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_negative_review_0'] = self.participant.vars['problem_parameters'].at[round_ - 1,'negative_review_0']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_negative_review_1'] = self.participant.vars['problem_parameters'].at[round_ - 1,'negative_review_1']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_negative_review_2'] = self.participant.vars['problem_parameters'].at[round_ - 1,'negative_review_2']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_negative_review_3'] = self.participant.vars['problem_parameters'].at[round_ - 1,'negative_review_3']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_negative_review_4'] = self.participant.vars['problem_parameters'].at[round_ - 1,'negative_review_4']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_negative_review_5'] = self.participant.vars['problem_parameters'].at[round_ - 1,'negative_review_5']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_negative_review_6'] = self.participant.vars['problem_parameters'].at[round_ - 1,'negative_review_6']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_positive_review_5'] = self.participant.vars['problem_parameters'].at[round_ - 1,'positive_review_5']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_positive_review_4'] = self.participant.vars['problem_parameters'].at[round_ - 1,'positive_review_4']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_positive_review_3'] = self.participant.vars['problem_parameters'].at[round_ - 1,'positive_review_3']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_positive_review_1'] = self.participant.vars['problem_parameters'].at[round_ - 1,'positive_review_1']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_positive_review_2'] = self.participant.vars['problem_parameters'].at[round_ - 1,'positive_review_2']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_positive_review_0'] = self.participant.vars['problem_parameters'].at[round_ - 1,'positive_review_0']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_random_positive_negative_review_0'] = self.participant.vars['problem_parameters'].at[round_ - 1,'random_positive_negative_review_0']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_random_positive_negative_review_1'] = self.participant.vars['problem_parameters'].at[round_ - 1,'random_positive_negative_review_1']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_random_positive_negative_review_2'] = self.participant.vars['problem_parameters'].at[round_ - 1,'random_positive_negative_review_2']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_random_positive_negative_review_3'] = self.participant.vars['problem_parameters'].at[round_ - 1,'random_positive_negative_review_3']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_random_positive_negative_review_4'] = self.participant.vars['problem_parameters'].at[round_ - 1,'random_positive_negative_review_4']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_random_positive_negative_review_5'] = self.participant.vars['problem_parameters'].at[round_ - 1,'random_positive_negative_review_5']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_random_positive_negative_review_6'] = self.participant.vars['problem_parameters'].at[round_ - 1,'random_positive_negative_review_6']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_score_0'] = self.participant.vars['problem_parameters'].at[round_ - 1,'score_0']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_score_1'] = self.participant.vars['problem_parameters'].at[round_ - 1,'score_1']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_score_2'] = self.participant.vars['problem_parameters'].at[round_ - 1,'score_2']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_score_3'] = self.participant.vars['problem_parameters'].at[round_ - 1,'score_3']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_score_4'] = self.participant.vars['problem_parameters'].at[round_ - 1,'score_4']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_score_5'] = self.participant.vars['problem_parameters'].at[round_ - 1,'score_5']
-    #             self.player.participant.vars['df'].at[round_ - 1,'group_score_6'] = self.participant.vars['problem_parameters'].at[round_ - 1,'score_6']
-    #             self.player.participant.vars['df'].at[round_ - 1, 'subsession_round_number'] = round_#average_score
-    #             self.player.participant.vars['df'].at[round_ - 1, 'group_average_score'] = round(self.participant.vars['problem_parameters'].at[round_ - 1,'average_score'],2)#round(self.group.average_score,2)
-    #     self.group.sender_answer_index = maya(self.player.participant.vars['df'],self.group.round_number)
-    #     print(f'mcts_result:{self.group.sender_answer_index}')
-    #     round_parameters = self.player.participant.vars['problem_parameters'].loc[self.group.round_number - 1]
-    #     #print(round_parameters)
-    #     self.group.sender_answer_scores = round_parameters[f'score_{self.group.sender_answer_index }']
-    #     self.group.sender_answer_reviews = \
-    #         round_parameters[f'random_positive_negative_review_{self.group.sender_answer_index }']
-    #     self.group.sende
-    #     r_answer_positive_reviews = \
-    #         round_parameters[f'positive_review_{self.group.sender_answer_index }']
-    #     self.group.sender_answer_negative_reviews = \
-    #         round_parameters[f'negative_review_{self.group.sender_answer_index }']
-    #     #not self.group.failed_intro_test and not self.group.instruction_timeout
-    # #print("--- %s seconds ---" % (time.time() - start_time))
 
 class ReceiverPage(CustomMturkPage):
     template_name = 'text_exp_bot_bg/ReceiverPage.html'
