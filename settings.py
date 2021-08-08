@@ -111,11 +111,9 @@ SECRET_KEY = 'po+8u@u7sxo_ib@7*y8ea%9%@wd6c$ojo=c@fc%v&9((9yx8wf'
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = [
     'otree',
-    'otree_mturk_utils',
     'radiogrid',
 ]
 
 EXTENSION_APPS = [
-    'otree_mturk_utils',
 ]
 
