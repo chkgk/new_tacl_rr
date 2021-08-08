@@ -308,7 +308,7 @@ def maya(df, round):
 
 class ReceiverWaitPage(Page):
     template_name = 'text_exp_bot_bg/ReceiverWaitPage.html'
-    timeout_seconds = 10
+    timeout_seconds = 220
 
     def live_method(self, data):
         # the client will ask us for the result over and over again.
