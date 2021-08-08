@@ -1,6 +1,5 @@
 from otree.api import Currency as c, currency_range
 import random
-from otree_mturk_utils.pages import CustomMturkPage, CustomMturkWaitPage
 from ._builtin import Page, WaitPage
 from .models import Constants
 from mcts_.mcts_main import mcts_live_simu
@@ -26,7 +25,7 @@ import threading
 #
 
 
-class Introduction(CustomMturkPage):
+class Introduction(Page):
     template_name = 'text_exp_bot/Introduction.html'
     form_model = 'player'
     form_fields = ['intro_test']
@@ -85,7 +84,7 @@ class AfterIntroTest(WaitPage):
         return self.round_number == 1 and not self.group.failed_intro_test
 
 
-class IntroTimeout(CustomMturkPage):
+class IntroTimeout(Page):
     template_name = 'text_exp_bot/IntroTimeout.html'
 
     def get_timeout_seconds(self):
@@ -146,7 +145,7 @@ class IntroTimeout(CustomMturkPage):
         }
 
 
-class IntroTestFeedback(CustomMturkPage):
+class IntroTestFeedback(Page):
     template_name = 'text_exp_bot/IntroTestFeedback.html'
 
     def get_timeout_seconds(self):
@@ -201,7 +200,7 @@ class IntroTestFeedback(CustomMturkPage):
         }
 
 
-class PersonalInformation(CustomMturkPage):
+class PersonalInformation(Page):
     template_name = 'text_exp_bot/PersonalInformation.html'
     form_model = 'player'
     form_fields = ['name', 'age', 'gender', 'is_student', 'occupation', 'residence']
@@ -244,7 +243,7 @@ class AfterInstructions(WaitPage):
         return self.round_number == 1 and not self.group.instruction_timeout and not self.group.failed_intro_test
 
 
-class SenderPage(CustomMturkPage):
+class SenderPage(Page):
     template_name = 'text_exp_bot/SenderPage.html'
     form_model = 'group'
     form_fields = ['sender_answer_index']
@@ -537,7 +536,7 @@ class ReceiverWaitPage(Page):
     #     #not self.group.failed_intro_test and not self.group.instruction_timeout
     # #print("--- %s seconds ---" % (time.time() - start_time))
 
-class ReceiverPage(CustomMturkPage):
+class ReceiverPage(Page):
     template_name = 'text_exp_bot/ReceiverPage.html'
     form_model = 'group'
     form_fields = ['receiver_choice']
@@ -590,7 +589,7 @@ class ReceiverPage(CustomMturkPage):
         }
 
 
-class Results(CustomMturkPage):
+class Results(Page):
     """This page displays the result of the round - what the receiver choose and what was the result of the lottery"""
 
     template_name = 'text_exp_bot/Results.html'
@@ -678,7 +677,7 @@ class Results(CustomMturkPage):
         }
 
 
-class Test(CustomMturkPage):
+class Test(Page):
     """
     This page will be displayed only to the DM in the verbal condition, in order to test them if they read the texts.
     """
@@ -757,7 +756,7 @@ class Test(CustomMturkPage):
         }
 
 
-class FeedbackTest(CustomMturkPage):
+class FeedbackTest(Page):
     """
     This page will be displayed only to the DM in the verbal condition, this will be the feedback for the DM test
     """
