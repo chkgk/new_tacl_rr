@@ -6,7 +6,8 @@ from mcts_.mcts_main import mcts_live_simu
 
 
 # setup
-REDIS_URL = redis.from_url(os.environ.get("REDIS_URL"))
+REDIS_URL = os.environ.get("REDIS_URL", None)
+print(REDIS_URL)
 if not REDIS_URL:
     huey = SqliteHuey()
 else:
