@@ -1,11 +1,10 @@
 from otree.api import Currency as c, currency_range
 import random
-from otree_mturk_utils.pages import CustomMturkPage, CustomMturkWaitPage
 from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-class GroupedWaitPage(CustomMturkWaitPage):
+class GroupedWaitPage(Page):
     group_by_arrival_time = True
     pay_by_time = Constants.pay_by_time_for_waiting / 60  # they will get 12 cents for a minute they wait
     startwp_timer = 360  # after 6 minutes they can skip to the end of the experiment
@@ -16,7 +15,7 @@ class GroupedWaitPage(CustomMturkWaitPage):
         return self.round_number == 1
 
 
-class Introduction(CustomMturkPage):
+class Introduction(Page):
     template_name = 'first_exp/Introduction.html'
 
     def is_displayed(self):
@@ -36,7 +35,7 @@ class Introduction(CustomMturkPage):
         }
 
 
-class PersonalInformation(CustomMturkPage):
+class PersonalInformation(Page):
     template_name = 'first_exp/PersonalInformation.html'
     form_model = 'player'
     form_fields = ['name', 'age', 'gender', 'is_student', 'occupation', 'residence']
@@ -59,7 +58,7 @@ class AfterInstructions(WaitPage):
         return self.round_number == 1  # show this page only in round 1: in the beginning of the game
 
 
-class SenderPage(CustomMturkPage):
+class SenderPage(Page):
     template_name = 'first_exp/SenderPage.html'
     form_model = 'group'
     form_fields = ['sender_answer']
@@ -111,7 +110,7 @@ class ReceiverWaitPage(WaitPage):
     #     return not self.session.vars['remove_player']
 
 
-class ReceiverPage(CustomMturkPage):
+class ReceiverPage(Page):
     template_name = 'first_exp/ReceiverPage.html'
     form_model = 'group'
     form_fields = ['receiver_choice']
@@ -164,7 +163,7 @@ class ReceiverPage(CustomMturkPage):
         }
 
 
-class Results(CustomMturkPage):
+class Results(Page):
     """This page displays the result of the round - what the receiver choose and what was the result of the lottery"""
 
     template_name = 'first_exp/Results.html'
@@ -213,7 +212,7 @@ class Results(CustomMturkPage):
         }
 
 
-class GameOver(CustomMturkPage):
+class GameOver(Page):
     """
     This page will be displayed after the last round is over - the experiment is finish.
     It will display the results: the payoff of each player
@@ -271,30 +270,6 @@ class GameOver(CustomMturkPage):
                     'player_bonus': self.player.participant.payoff,
                     'participation_fee': self.session.config['participation_fee'],
                     }
-
-
-# class PlayerRemoved(CustomMturkPage):
-#     """
-#     This page will be shown if one of the players pass the 5 timeouts
-#     """
-#     template_name = 'first_exp/PlayerRemoved.html'
-#
-#     def is_displayed(self):
-#         # show this page if a player pass the 5 timeouts and self.round_number == Constants.num_rounds + 1
-#         return self.session.vars['remove_player']
-#
-#     def vars_for_template(self):
-#         player_not_removed = self.group.get_player_by_role(self.session.vars['player_not_remove'])
-#
-#         # get the number of points of each player and convert to real money
-#         player_total_payoff = player_not_removed.participant.payoff_plus_participation_fee()
-#         print('player_total_payoff without : payment_for_wait', player_total_payoff)
-#         player_total_payoff += self.participant.vars['payment_for_wait']
-#         return {
-#             'player_removed': self.session.vars['player_to_remove'],
-#             'player_total_payoff': player_total_payoff,
-#             'removed_player_total_payoff': c(0).to_real_world_currency(self.session)
-#         }
 
 
 class OnePlayerWait(Page):
