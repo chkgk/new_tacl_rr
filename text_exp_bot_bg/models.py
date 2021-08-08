@@ -10,9 +10,9 @@ import time
 #import pandas as pd
 
 base_directory = os.path.abspath(os.curdir)
-data_directory = os.path.join(base_directory, 'text_exp_bot')
+data_directory = os.path.join(base_directory, 'text_exp_bot_bg')
 reviews_not_seen_file_path = os.path.join(data_directory, 'reviews_not_seen.csv')
-image_directory = os.path.join(base_directory, '_static', 'text_exp_bot')
+image_directory = os.path.join(base_directory, '_static', 'text_exp_bot_bg')
 
 author = 'Maya Tarno'
 
