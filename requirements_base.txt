@@ -1,6 +1,5 @@
 otree[mturk]>=3.0
 transformers
-# django-radiogrid>=1.0.4
 # pandas>=0.20.3
 pandas == 1.2.3
 -f https://download.pytorch.org/whl/torch_stable.html
