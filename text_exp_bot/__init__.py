@@ -1,1 +1,0 @@
-default_app_config = 'text_exp_bot.apps.MyAppConfig'
