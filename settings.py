@@ -41,24 +41,24 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
 
-    {
-        'name': 'text_exp_verbal_cond',
-        'display_name': 'text_exp_verbal_cond',
-        'num_demo_participants': 1,
-        'app_sequence': ['text_exp'],
-        'use_browser_bots': False,
-        'cond': 'verbal',
-        'review_file_name': '10_reviews',
-    },
-    {
-        'name': 'text_exp_bot',
-        'display_name': 'text_exp_bot',
-        'num_demo_participants': 1,
-        'app_sequence': ['text_exp_bot'],
-        'use_browser_bots': False,
-        'cond': 'verbal',
-        'review_file_name': '10_reviews',
-    },
+#     {
+#         'name': 'text_exp_verbal_cond',
+#         'display_name': 'text_exp_verbal_cond',
+#         'num_demo_participants': 1,
+#         'app_sequence': ['text_exp'],
+#         'use_browser_bots': False,
+#         'cond': 'verbal',
+#         'review_file_name': '10_reviews',
+#     },
+#     {
+#         'name': 'text_exp_bot',
+#         'display_name': 'text_exp_bot',
+#         'num_demo_participants': 1,
+#         'app_sequence': ['text_exp_bot'],
+#         'use_browser_bots': False,
+#         'cond': 'verbal',
+#         'review_file_name': '10_reviews',
+#     },
     {
         'name': 'text_exp_bot_bg',
         'display_name': 'text_exp_bot_bg',
