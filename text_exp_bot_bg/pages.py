@@ -308,13 +308,14 @@ def maya(df, round):
 
 class ReceiverWaitPage(Page):
     template_name = 'text_exp_bot_bg/ReceiverWaitPage.html'
-    timeout_seconds = 220
+    timeout_seconds = 10
 
     def live_method(self, data):
         # the client will ask us for the result over and over again.
         # we check if it is unequal "none". If so, we got a result and can store and return it.
         if data['message'] == 'get_result':
             try:
+                print('try')
                 action = huey.result(self.player.action_id)
             except TypeError:
                 action = None
@@ -361,6 +362,7 @@ class ReceiverWaitPage(Page):
         # if the task is not yet running, start it.
         if not self.player.action_id:
             self.group.set_round_parameters()
+            print('start start_mcts')
             action = start_mcts(self.player.participant.vars['round_parameters'], self.group.round_number)
             self.player.action_id = action.id
 
