@@ -1,4 +1,5 @@
 from otree.api import Currency as c, currency_range
+from otree.api import *
 import random
 from otree_mturk_utils.pages import CustomMturkPage, CustomMturkWaitPage
 from ._builtin import Page, WaitPage
@@ -311,12 +312,6 @@ class ReceiverWaitPage(Page):
     timeout_seconds = 220
 
     def live_method(self, data):
-        if data['message'] == 'start':
-            self.group.set_round_parameters()
-            # when the player clicks the start button, we start the long-running task and store its id
-            action = start_mcts(self.player.participant.vars['round_parameters'], self.group.round_number)
-            self.player.action_id = action.id
-
         # the client will ask us for the result over and over again.
         # we check if it is unequal "none". If so, we got a result and can store and return it.
         if data['message'] == 'get_result':
@@ -342,7 +337,7 @@ class ReceiverWaitPage(Page):
                 self.group.sender_answer_negative_reviews = \
                     round_parameters[f'negative_review_{self.group.sender_answer_index}']
                 print('table results are updated!')
-                return {self.player.id_in_group: {'message': 'action', 'action': action}}
+                return {self.player.id_in_group: {'message': 'calculation_done'}}
 
     # def before_next_page(self):
     #     print('after_mcts!')
@@ -362,6 +357,13 @@ class ReceiverWaitPage(Page):
     def is_displayed(self):
         if not self.group.failed_intro_test:
             return True
+
+    def vars_for_template(self):
+        # if the task is not yet running, start it.
+        if not self.player.action_id:
+            self.group.set_round_parameters()
+            action = start_mcts(self.player.participant.vars['round_parameters'], self.group.round_number)
+            self.player.action_id = action.id
 
 
 class ReceiverPage(CustomMturkPage):
