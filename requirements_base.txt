@@ -1,4 +1,4 @@
-otree[mturk]>=3.0
+otree[mturk]==3.3
 transformers
 # pandas>=0.20.3
 pandas == 1.2.3
