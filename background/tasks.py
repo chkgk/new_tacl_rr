@@ -17,6 +17,6 @@ else:
 def start_mcts(df, round_number):
     # make this task longer than it really is
 #     action = mcts_live_simu(df, round_number)
-    time.sleep(100)
+    time.sleep(3)
     action = 5
     return action
