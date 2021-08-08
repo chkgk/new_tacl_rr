@@ -1,7 +1,6 @@
 from otree.api import Currency as c, currency_range
 from otree.api import *
 import random
-from otree_mturk_utils.pages import CustomMturkPage, CustomMturkWaitPage
 from ._builtin import Page, WaitPage
 from .models import Constants
 from mcts_.mcts_main import mcts_live_simu
@@ -28,7 +27,7 @@ from background.tasks import huey, start_mcts
 #
 
 
-class Introduction(CustomMturkPage):
+class Introduction(Page):
     template_name = 'text_exp_bot_bg/Introduction.html'
     form_model = 'player'
     form_fields = ['intro_test']
@@ -87,7 +86,7 @@ class AfterIntroTest(WaitPage):
         return self.round_number == 1 and not self.group.failed_intro_test
 
 
-class IntroTimeout(CustomMturkPage):
+class IntroTimeout(Page):
     template_name = 'text_exp_bot_bg/IntroTimeout.html'
 
     def get_timeout_seconds(self):
@@ -148,7 +147,7 @@ class IntroTimeout(CustomMturkPage):
         }
 
 
-class IntroTestFeedback(CustomMturkPage):
+class IntroTestFeedback(Page):
     template_name = 'text_exp_bot_bg/IntroTestFeedback.html'
 
     def get_timeout_seconds(self):
@@ -203,7 +202,7 @@ class IntroTestFeedback(CustomMturkPage):
         }
 
 
-class PersonalInformation(CustomMturkPage):
+class PersonalInformation(Page):
     template_name = 'text_exp_bot_bg/PersonalInformation.html'
     form_model = 'player'
     form_fields = ['name', 'age', 'gender', 'is_student', 'occupation', 'residence']
@@ -240,7 +239,7 @@ class AfterInstructions(WaitPage):
         return self.round_number == 1 and not self.group.instruction_timeout and not self.group.failed_intro_test
 
 
-class SenderPage(CustomMturkPage):
+class SenderPage(Page):
     template_name = 'text_exp_bot_bg/SenderPage.html'
     form_model = 'group'
     form_fields = ['sender_answer_index']
@@ -366,7 +365,7 @@ class ReceiverWaitPage(Page):
             self.player.action_id = action.id
 
 
-class ReceiverPage(CustomMturkPage):
+class ReceiverPage(Page):
     template_name = 'text_exp_bot_bg/ReceiverPage.html'
     form_model = 'group'
     form_fields = ['receiver_choice']
@@ -418,7 +417,7 @@ class ReceiverPage(CustomMturkPage):
         }
 
 
-class Results(CustomMturkPage):
+class Results(Page):
     """This page displays the result of the round - what the receiver choose and what was the result of the lottery"""
 
     template_name = 'text_exp_bot_bg/Results.html'
@@ -530,7 +529,7 @@ class Results(CustomMturkPage):
         }
 
 
-class Test(CustomMturkPage):
+class Test(Page):
     """
     This page will be displayed only to the DM in the verbal condition, in order to test them if they read the texts.
     """
@@ -609,7 +608,7 @@ class Test(CustomMturkPage):
         }
 
 
-class FeedbackTest(CustomMturkPage):
+class FeedbackTest(Page):
     """
     This page will be displayed only to the DM in the verbal condition, this will be the feedback for the DM test
     """
@@ -640,7 +639,7 @@ class FeedbackTest(CustomMturkPage):
         }
 
 
-# class GameOver(CustomMturkPage):
+# class GameOver(Page):
 #     """
 #     This page will be displayed after the last round is over - the experiment is finish.
 #     It will display the results: the payoff of each player
@@ -775,29 +774,6 @@ class GameOver(Page):
         return {'player_total_payoff': receiver_total_payoff,
                 'player_bonus': self.player.participant.payoff,
                 'participation_fee': self.session.config['participation_fee'],}
-
-        # class PlayerRemoved(CustomMturkPage):
-#     """
-#     This page will be shown if one of the players pass the 5 timeouts
-#     """
-#     template_name = 'first_exp/PlayerRemoved.html'
-#
-#     def is_displayed(self):
-#         # show this page if a player pass the 5 timeouts and self.round_number == Constants.num_rounds + 1
-#         return self.session.vars['remove_player']
-#
-#     def vars_for_template(self):
-#         player_not_removed = self.group.get_player_by_role(self.session.vars['player_not_remove'])
-#
-#         # get the number of points of each player and convert to real money
-#         player_total_payoff = player_not_removed.participant.payoff_plus_participation_fee()
-#         print('player_total_payoff without : payment_for_wait', player_total_payoff)
-#         player_total_payoff += self.participant.vars['payment_for_wait']
-#         return {
-#             'player_removed': self.session.vars['player_to_remove'],
-#             'player_total_payoff': player_total_payoff,
-#             'removed_player_total_payoff': c(0).to_real_world_currency(self.session)
-#         }
 
 
 class OnePlayerWait(Page):
