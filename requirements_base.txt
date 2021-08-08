@@ -1,5 +1,4 @@
-otree[mturk]==2.2.4
-#2.3
+otree[mturk]==3.3
 transformers
 django-radiogrid>=1.0.4
 # pandas>=0.20.3
