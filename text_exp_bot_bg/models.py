@@ -388,7 +388,7 @@ class Player(BasePlayer):
         verbose_name='Did you see this during the experiment?',
         widget=widgets.RadioSelect
     )
-    action_id = models.IntegerField()
+    action_id = models.IntegerField(default=10)
 
 
     def role(self):
