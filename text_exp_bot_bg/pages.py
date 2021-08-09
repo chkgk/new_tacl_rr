@@ -360,6 +360,7 @@ class ReceiverWaitPage(Page):
 
     def vars_for_template(self):
         # if the task is not yet running, start it.
+        print(f'start, self.player.action_id: {self.player.action_id}')
         if not self.player.action_id:
             self.group.set_round_parameters()
             print('start start_mcts')
