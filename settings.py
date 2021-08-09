@@ -68,11 +68,6 @@ SESSION_CONFIGS = [
         'cond': 'verbal',
         'review_file_name': '10_reviews',
     },
-        dict(
-        name='long_task_demo',
-        app_sequence=['long_task_demo'],
-        num_demo_participants=2,
-    ),
     
 ]
 
