@@ -40,26 +40,26 @@ def creating_session(subsession):
 class Calculation(Page):
    
     @staticmethod
-    def vars_for_template(self):
+    def vars_for_template(player):
         # if the task is not yet running, start it.
-        if not self.player.result_id:
-            result = add(self.player.random_number1, player.random_number2)
-            self.player.result_id = result.id
+        if not player.result_id:
+            result = add(player.random_number1, player.random_number2)
+            player.result_id = result.id
             
             
-    def live_method(self, data):
+    def live_method(player: Player, data):
         # the client will ask us for the result over and over again.
         # we check if it is unequal "none". If so, we got a result and can store and return it.
         if data['message'] == 'get_result':
             try:
-                result = huey.result(self.player.result_id)
+                result = huey.result(player.result_id)
             except TypeError:
                 result = None
 
             if result:
                 # store the result
-                self.player.task_result = result
-                return {self.player.id_in_group: {'message': 'calculation_done'}}
+                player.task_result = result
+                return {player.id_in_group: {'message': 'calculation_done'}}
 
 class Decision(Page):
     form_model = 'player'
