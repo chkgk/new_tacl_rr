@@ -304,35 +304,22 @@ class SenderPage(Page):
 
 class ReceiverWaitPage(Page):
     template_name = 'text_exp_bot_bg/ReceiverWaitPage.html'
-#     timeout_seconds = 220
 
     def live_method(self, data):
-        # the client will ask us for the result over and over again.
-        # we check if it is unequal "none". If so, we got a result and can store and return it.
         if data['message'] == 'get_result':
             try:
                 print('try')
                 action = huey.result(self.player.action_id)
             except TypeError:
                 action = None
-
             if action:
-                # store the result
                 self.player.action = action
-                print('after_mcts!')
                 self.group.sender_answer_index = self.group.action if self.group.action is not None else 6
-                print(f'mcts_result:{self.group.sender_answer_index}')
-                round_parameters = self.player.participant.vars['problem_parameters'].loc[
-                    self.group.round_number - 1]
+                round_parameters = self.player.participant.vars['problem_parameters'].loc[self.group.round_number - 1]
                 self.group.sender_answer_scores = round_parameters[f'score_{self.group.sender_answer_index}']
-                self.group.sender_answer_reviews = \
-                    round_parameters[f'random_positive_negative_review_{self.group.sender_answer_index}']
-                print(f'mcts_rev: {self.group.sender_answer_reviews}')
-                self.group.sender_answer_positive_reviews = \
-                    round_parameters[f'positive_review_{self.group.sender_answer_index}']
-                self.group.sender_answer_negative_reviews = \
-                    round_parameters[f'negative_review_{self.group.sender_answer_index}']
-                print('table results are updated!')
+                self.group.sender_answer_reviews = round_parameters[f'random_positive_negative_review_{self.group.sender_answer_index}']
+                self.group.sender_answer_positive_reviews = round_parameters[f'positive_review_{self.group.sender_answer_index}']
+                self.group.sender_answer_negative_reviews = round_parameters[f'negative_review_{self.group.sender_answer_index}']
                 return {self.player.id_in_group: {'message': 'calculation_done'}}
 
     def is_displayed(self):
@@ -340,7 +327,6 @@ class ReceiverWaitPage(Page):
             return True
 
     def vars_for_template(self):
-        # if the task is not yet running, start it.
         if not self.player.action_id:
             self.group.set_round_parameters()
             print('start start_mcts')
