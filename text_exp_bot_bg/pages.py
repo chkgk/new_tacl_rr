@@ -1,13 +1,13 @@
 from otree.api import Currency as c, currency_range
 from otree.api import *
 import random
-from ._builtin import Page, WaitPage
+# from ._builtin import Page, WaitPage
 from .models import Constants
-from mcts_.mcts_main import mcts_live_simu
-import time
-import gc
+# from mcts_.mcts_main import mcts_live_simu
+# import time
+# import gc
 import pandas as pd
-import threading
+# import threading
 from background.tasks import huey, start_mcts
 
 # action = {}
@@ -302,10 +302,6 @@ class SenderPage(Page):
         }
 
 
-def maya(df, round):
-    return mcts_live_simu(df, round)
-
-
 class ReceiverWaitPage(Page):
     template_name = 'text_exp_bot_bg/ReceiverWaitPage.html'
 #     timeout_seconds = 220
@@ -339,28 +335,12 @@ class ReceiverWaitPage(Page):
                 print('table results are updated!')
                 return {self.player.id_in_group: {'message': 'calculation_done'}}
 
-    # def before_next_page(self):
-    #     print('after_mcts!')
-    #     self.group.sender_answer_index = self.group.action if self.group.action is not None else 6
-    #     print(f'mcts_result:{self.group.sender_answer_index}')
-    #     round_parameters = self.player.participant.vars['problem_parameters'].loc[self.group.round_number - 1]
-    #     self.group.sender_answer_scores = round_parameters[f'score_{self.group.sender_answer_index}']
-    #     self.group.sender_answer_reviews = \
-    #         round_parameters[f'random_positive_negative_review_{self.group.sender_answer_index}']
-    #     print(f'mcts_rev: {self.group.sender_answer_reviews}')
-    #     self.group.sender_answer_positive_reviews = \
-    #         round_parameters[f'positive_review_{self.group.sender_answer_index}']
-    #     self.group.sender_answer_negative_reviews = \
-    #         round_parameters[f'negative_review_{self.group.sender_answer_index}']
-    #     print('table results are updated!')
-
     def is_displayed(self):
         if not self.group.failed_intro_test:
             return True
 
     def vars_for_template(self):
         # if the task is not yet running, start it.
-        print(f'start, self.player.action_id: {self.player.action_id}')
         if not self.player.action_id:
             self.group.set_round_parameters()
             print('start start_mcts')
