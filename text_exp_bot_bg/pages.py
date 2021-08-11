@@ -8,7 +8,7 @@ from .models import Constants
 # import gc
 import pandas as pd
 # import threading
-from background.tasks import huey, start_mcts
+from background.tasks import start_mcts
 
 # action = {}
 # in_thred = {0:0}
@@ -304,23 +304,7 @@ class SenderPage(Page):
 
 class ReceiverWaitPage(Page):
     template_name = 'text_exp_bot_bg/ReceiverWaitPage.html'
-
-    def live_method(self, data):
-        if data['message'] == 'get_result':
-            try:
-                print('try')
-                action = huey.result(self.player.action_id)
-            except TypeError:
-                action = None
-            if action:
-                self.player.action = action
-                self.group.sender_answer_index = self.group.action if self.group.action is not None else 6
-                round_parameters = self.player.participant.vars['problem_parameters'].loc[self.group.round_number - 1]
-                self.group.sender_answer_scores = round_parameters[f'score_{self.group.sender_answer_index}']
-                self.group.sender_answer_reviews = round_parameters[f'random_positive_negative_review_{self.group.sender_answer_index}']
-                self.group.sender_answer_positive_reviews = round_parameters[f'positive_review_{self.group.sender_answer_index}']
-                self.group.sender_answer_negative_reviews = round_parameters[f'negative_review_{self.group.sender_answer_index}']
-                return {self.player.id_in_group: {'message': 'calculation_done'}}
+    live_method = 'live_resultcheck'
 
     def is_displayed(self):
         if not self.group.failed_intro_test:

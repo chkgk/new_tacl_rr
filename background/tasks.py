@@ -22,4 +22,5 @@ def start_mcts(df, round_number):
     print('start_mcts')
     time.sleep(3)
     action = 5
+    print('mcts done')
     return action

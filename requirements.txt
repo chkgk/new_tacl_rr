@@ -1,6 +1,6 @@
 # this is for Heroku and other servers.
 # Locally, you should install requirements_base.txt
--r requirements_base.txt
+# -r requirements_base.txt
 psycopg2>=2.8,<2.9
 huey==2.3.2
-redis==3.5.3
+redis==3.3.8

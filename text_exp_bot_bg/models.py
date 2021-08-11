@@ -8,6 +8,7 @@ import os
 import math
 import time
 #import pandas as pd
+from background.tasks import huey
 
 base_directory = os.path.abspath(os.curdir)
 data_directory = os.path.join(base_directory, 'text_exp_bot_bg')
@@ -397,6 +398,24 @@ class Player(BasePlayer):
 
     # def is_displayed(self):
     #     return self.participant.vars['num_timeout'] < 5
+
+    def live_resultcheck(self, data):
+        if data['message'] == 'get_result':
+            try:
+                print('try to get result with id', self.action_id)
+                action = huey.result(self.action_id)
+            except TypeError:
+                action = None
+            if action:
+                print('got the result!')
+                self.action = action
+                # self.group.sender_answer_index = self.group.action if self.group.action is not None else 6
+                # round_parameters = self.participant.vars['problem_parameters'].loc[self.group.round_number - 1]
+                # self.group.sender_answer_scores = round_parameters[f'score_{self.group.sender_answer_index}']
+                # self.group.sender_answer_reviews = round_parameters[f'random_positive_negative_review_{self.group.sender_answer_index}']
+                # self.group.sender_answer_positive_reviews = round_parameters[f'positive_review_{self.group.sender_answer_index}']
+                # self.group.sender_answer_negative_reviews = round_parameters[f'negative_review_{self.group.sender_answer_index}']
+                return {self.id_in_group: {'message': 'calculation_done'}}
 
 
 class Session:
